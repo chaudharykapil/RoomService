@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./build/styles.css" />
+    <link rel="stylesheet" href="{{asset('css/app.css')}}" />
     <title>Home</title>
   </head>
   <body>
@@ -284,15 +284,16 @@
       </script>
       <div class="max-h-screen flex justify-center">
         <div class="py-6 px-8 h-80 mt-20 bg-white rounded shadow-xl">
-          <form action="">
+          <form action="/admin/login" method="POST">
+            @csrf
             <div class="mb-6">
               <label for="name" class="block text-gray-800 font-bold"
-                >Name:</label
+                >Email:</label
               >
               <input
                 type="text"
-                name="name"
-                id="name"
+                name="email"
+                id="username"
                 placeholder="username"
                 class="
                   w-full
@@ -310,13 +311,13 @@
 
             <div>
               <label for="email" class="block text-gray-800 font-bold"
-                >Email:</label
+                >Password:</label
               >
               <input
-                type="text"
-                name="email"
-                id="email"
-                placeholder="@email"
+                type="password"
+                name="password"
+                id="password"
+                placeholder="password"
                 class="
                   w-full
                   border border-gray-300
@@ -329,7 +330,7 @@
                   :ring-indigo-600
                 "
               />
-
+              <!--
               <a
                 href="#"
                 class="
@@ -343,8 +344,10 @@
                 "
                 >Forget Password</a
               >
+              -->
             </div>
-            <butt
+            <button
+              type="submit"
               class="
                 cursor-pointer
                 py-2
@@ -358,8 +361,8 @@
                 text-center
                 rounded
               "
-              >Login</butt
-            >
+              
+              >Login</button>
           </form>
         </div>
       </div>
