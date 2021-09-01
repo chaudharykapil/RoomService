@@ -13,7 +13,13 @@ class Levels extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('levels', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('build_id',10);
+            $table->integer("level_no");
+            $table->string("level_name",10);
+            $table->boolean("status");
+        });
     }
 
     /**
