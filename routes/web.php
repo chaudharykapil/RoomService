@@ -18,6 +18,9 @@ use App\Http\Controllers\LevelController;
 
 Route::get('/',[AdminController::class,'showLoginPage']);
 Route::post('/admin/login',[AdminController::class,'Login']);
+Route::get('/admin/login/provider',[AdminController::class,'redirectToProvider']);
+Route::get('/admin/login/google/c',[AdminController::class,'GoogleCallback']);
+Route::get('/admin/logout',[AdminController::class,'LogOut']);
 Route::get('/room/new',[RoomController::class,'AddRoomPage']);
 Route::get('/room/edit',[RoomController::class,'EditRoomPage']);
 Route::get('/building/new',[BuildingController::class,'AddBuildingPage']);
