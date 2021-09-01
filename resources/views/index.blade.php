@@ -3,16 +3,17 @@
       <h1 class="self-center text-3xl text-red-500">Admin Login</h1>
       <div class="max-h-screen flex justify-center">
         <div class="py-6 px-8 mt-20 bg-white rounded shadow-xl">
-          <form action="">
+          <form action="/admin/login" method="POST">
+            @csrf
             <div class="mb-6">
-              <label for="name" class="block text-gray-800 font-bold"
-                >Name or Email</label
+              <label for="email" class="block text-gray-800 font-bold"
+                >Email</label
               >
               <input
                 type="text"
-                name="name"
-                id="name"
-                placeholder="username"
+                name="email"
+                id="email"
+                placeholder="@email"
                 class="
                   w-full
                   border border-gray-300
@@ -28,7 +29,7 @@
             </div>
 
             <div>
-              <label for="email" class="block text-gray-800 font-bold"
+              <label for="password" class="block text-gray-800 font-bold"
                 >Password</label
               >
               <input
@@ -49,21 +50,9 @@
                 "
               />
 
-              <a
-                href="#"
-                class="
-                  text-sm
-                  font-thin
-                  text-gray-800
-                  hover:underline
-                  mt-2
-                  inline-block
-                  hover:text-red-500
-                "
-                >Forget Password</a
-              >
             </div>
             <button
+            type="submit"
               class="
                 cursor-pointer
                 py-2
@@ -80,6 +69,21 @@
             >
               Login
             </button>
+            </form>
+            <hr class="
+            cursor-pointer
+            py-0
+            px-4
+            block
+            mt-6
+            bg-white
+            text-red-500
+            font-bold
+            w-full
+            text-center
+            rounded
+          ">
+            <a href="/admin/login/provider">
             <button
               class="
                 cursor-pointer
@@ -97,7 +101,8 @@
             >
               Sign In with Google
             </button>
-          </form>
+            </a>
+          
         </div>
       </div>
   @endsection
