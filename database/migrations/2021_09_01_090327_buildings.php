@@ -13,7 +13,12 @@ class Buildings extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('buildings', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string("b_id",10);
+            $table->string("b_name",15);
+            $table->boolean("status");
+        });
     }
 
     /**
