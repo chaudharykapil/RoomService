@@ -10,8 +10,4 @@ class AdminController extends Controller
     {
         return view("index");
     }
-    public function Login(Request $req)
-    {
-        return $req->input();
-    }
 }
