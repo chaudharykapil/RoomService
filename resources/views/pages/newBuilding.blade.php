@@ -22,7 +22,8 @@
               </h1>
             </div>
           </div>
-          <form action="" method="post">
+          <form action="/building/new" method="post">
+            @csrf
           <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
             <div class="grid grid-cols-1">
               <label
@@ -47,6 +48,7 @@
                   focus:border-transparent
                 "
                 type="text"
+                name="build_id"
                 placeholder="Block_11"
               />
             </div>
@@ -73,6 +75,7 @@
                   focus:border-transparent
                 "
                 type="text"
+                name="build_name"
                 placeholder="Block 11"
               />
             </div>
@@ -105,7 +108,7 @@
                 >
                   <input
                     type="checkbox"
-                    name="toggle"
+                    name="status"
                     id="toggle"
                     class="
                       toggle-checkbox
