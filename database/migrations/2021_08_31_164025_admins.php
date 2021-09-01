@@ -17,6 +17,7 @@ class Admins extends Migration
             $table->increments('id');
             $table->string("email",50);
             $table->string("password",50);
+            $table->string("provider")->default("");
         });
     }
 
