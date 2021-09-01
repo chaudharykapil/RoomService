@@ -282,18 +282,18 @@
           }
         });
       </script>
+      <h1 class="self-center text-3xl text-red-500">Admin Login</h1>
       <div class="max-h-screen flex justify-center">
-        <div class="py-6 px-8 h-80 mt-20 bg-white rounded shadow-xl">
-          <form action="/admin/login" method="POST">
-            @csrf
+        <div class="py-6 px-8 mt-20 bg-white rounded shadow-xl">
+          <form action="">
             <div class="mb-6">
               <label for="name" class="block text-gray-800 font-bold"
-                >Email:</label
+                >Name or Email</label
               >
               <input
                 type="text"
-                name="email"
-                id="username"
+                name="name"
+                id="name"
                 placeholder="username"
                 class="
                   w-full
@@ -311,7 +311,7 @@
 
             <div>
               <label for="email" class="block text-gray-800 font-bold"
-                >Password:</label
+                >Password</label
               >
               <input
                 type="password"
@@ -330,7 +330,7 @@
                   :ring-indigo-600
                 "
               />
-              <!--
+
               <a
                 href="#"
                 class="
@@ -344,10 +344,8 @@
                 "
                 >Forget Password</a
               >
-              -->
             </div>
             <button
-              type="submit"
               class="
                 cursor-pointer
                 py-2
@@ -361,8 +359,26 @@
                 text-center
                 rounded
               "
-              
-              >Login</button>
+            >
+              Login
+            </button>
+            <button
+              class="
+                cursor-pointer
+                py-2
+                px-4
+                block
+                mt-6
+                bg-white
+                text-red-500
+                font-bold
+                w-full
+                text-center
+                rounded
+              "
+            >
+              Sign In with Google
+            </button>
           </form>
         </div>
       </div>
