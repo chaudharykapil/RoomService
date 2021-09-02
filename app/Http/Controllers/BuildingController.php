@@ -9,14 +9,23 @@ class BuildingController extends Controller
 {
     public function AddBuildingPage()
     {
+        if(!session('admin')){
+            return redirect('/');
+        }
         return view("pages/newBuilding");
     }
     public function EditBuildingPage()
     {
+        if(!session('admin')){
+            return redirect('/');
+        }
         return view("pages/viewBuilding");
     }
     public function createBuilding(Request $req)
     {
+        if(!session('admin')){
+            return redirect('/');
+        }
         $build = new Building;
         $data = $req->input();
         $build->b_id = $data['build_id'];
@@ -28,5 +37,12 @@ class BuildingController extends Controller
         }
         $build->save();
         return redirect('/building/new');
+    }
+    public function ListBuildingPage()
+    {
+        if(!session('admin')){
+            return redirect('/');
+        }
+        return view("pages/buildingList");
     }
 }
