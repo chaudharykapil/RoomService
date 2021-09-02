@@ -9,7 +9,7 @@ class AdminController extends Controller
     public function showLoginPage()
     {
         if(session("admin")){
-            return session("admin");
+            return redirect('/room/list');;
         }
         return view("index");
     }
