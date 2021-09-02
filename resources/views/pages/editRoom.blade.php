@@ -2,9 +2,10 @@
   @section('content')
     @if(Session::has('message'))
       <script>
-        alert('{{Session::get("message")}}')
+        alert('{{Session::pull("message")}}')
       </script>
     @endif
+    
       <!-- component -->
       <div class="flex items-center justify-center">
         <div
@@ -19,8 +20,7 @@
             p-4
           "
         >
-        <form action="/room/edit" method="post">
-        @csrf
+        
           <div class="flex justify-center">
             <div class="flex">
               <h1 class="text-gray-600 font-semibold md:text-2xl text-xl">
@@ -28,7 +28,8 @@
               </h1>
             </div>
           </div>
-
+          <form action="/room/edit/{{$room->build_id}}" method="post">
+            @csrf
           <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
             <div class="grid grid-cols-1">
               <label
@@ -52,6 +53,7 @@
                   focus:ring-red-500
                   focus:border-transparent
                 "
+                name="build_id"
                 value="{{$room->build_id}}"
                 type="text"
                 placeholder="Block 1"
@@ -79,6 +81,7 @@
                   focus:ring-red-500
                   focus:border-transparent
                 "
+                name="level_no"
                 value="{{$room->level_no}}"
                 type="text"
                 placeholder="1"
@@ -108,6 +111,7 @@
                   focus:ring-red-500
                   focus:border-transparent
                 "
+                name="room_no"
                 value="{{$room->room_no}}"
                 type="text"
                 placeholder=" 101"
@@ -135,6 +139,7 @@
                   focus:ring-red-500
                   focus:border-transparent
                 "
+                name="room_name"
                 value="{{$room->room_name}}"
                 type="text"
                 placeholder="Room Name"
@@ -153,7 +158,7 @@
                 >Room Type</label
               >
               <select
-                name=""
+                
                 id=""
                 class="
                   py-2
@@ -163,8 +168,9 @@
                   mt-1
                   focus:outline-none focus:ring-2 focus:ring-red-500
                 "
-                value="{{$room->room_type}}"
+                name="room_type"
               >
+                <option value="{{$room->room_type}}" label="{{$room->room_type}}"></option>
                 <option value="Any Room" label="Any Room"></option>
                 <option value="Computer Room" label="Computer Room"></option>
                 <option value="Drama Studio" label="Drama Studio"></option>
@@ -230,7 +236,6 @@
                 >
                   <input
                     type="checkbox"
-                    name="toggle"
                     id="toggle"
                     class="
                       toggle-checkbox
@@ -244,6 +249,7 @@
                       appearance-none
                       cursor-pointer
                     "
+                    name="status"
                     @if ($room->status)
                         checked
                     @endif
@@ -288,6 +294,28 @@
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
             <div class="grid grid-cols-1">
+              <a href="/room/delete/{{$room->id}}">
+                <button
+                  id="form2btn"
+                  class="
+                    text-white
+                    rounded-lg
+                    bg-red-500
+                    shadow-lg
+                    block
+                    md:inline-block
+                    w-24
+                    h-10
+                    mt-2
+                  "
+                  type="button"
+                  onclick="deleteRoom()"
+                >
+                  🖫 Delete
+                </button>
+              </a>
+            </div>
+            <div class="grid grid-cols-1">
               <button
                 class="
                   text-white
@@ -300,31 +328,15 @@
                   h-10
                   mt-2
                 "
+                type="submit"
               >
                 🖫 Update
-              </button>
-            </div>
-            <div class="grid grid-cols-1">
-              <button
-                class="
-                  text-white
-                  rounded-lg
-                  bg-red-500
-                  shadow-lg
-                  block
-                  md:inline-block
-                  w-24
-                  h-10
-                  mt-2
-                "
-              >
-                🖫 Delete
               </button>
             </div>
           </div>
         </form>
         </div>
       </div>
-  
+
       
   @endsection
