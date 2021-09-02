@@ -1,5 +1,10 @@
 @extends('layout')
   @section('content')
+  @if(Session::has('message'))
+      <script>
+        alert('{{Session::get("message")}}')
+      </script>
+    @endif
       <h1 class="self-center text-3xl text-red-500">Admin Login</h1>
       <div class="max-h-screen flex justify-center">
         <div class="py-6 px-8 mt-20 bg-white rounded shadow-xl">
@@ -97,6 +102,7 @@
                 w-full
                 text-center
                 rounded
+                border-red-500 border-2
               "
             >
               Sign In with Google

@@ -1,5 +1,10 @@
 @extends('..layout')
   @section('content')
+  @if(Session::has('message'))
+      <script>
+        alert('{{Session::get("message")}}')
+      </script>
+    @endif
       <!-- component -->
       <div class="flex items-center justify-center">
         <div
@@ -21,7 +26,7 @@
               </h1>
             </div>
           </div>
-          <form action="" method="POST">
+          <form action="/room/new" method="POST">
             @csrf
           <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
             <div class="grid grid-cols-1">
@@ -47,6 +52,7 @@
                   focus:border-transparent
                 "
                 type="text"
+                name="build_id"
                 placeholder="Block 1"
               />
             </div>
@@ -72,8 +78,9 @@
                   focus:ring-red-500
                   focus:border-transparent
                 "
-                type="text"
-                placeholder="1"
+                type="number"
+                name="level_no"
+                placeholder="level no."
               />
             </div>
           </div>
@@ -100,8 +107,9 @@
                   focus:ring-red-500
                   focus:border-transparent
                 "
-                type="text"
-                placeholder=" 101"
+                type="number"
+                name="room_no"
+                placeholder="room no."
               />
             </div>
             <div class="grid grid-cols-1">
@@ -127,6 +135,7 @@
                   focus:border-transparent
                 "
                 type="text"
+                name="room_name"
                 placeholder="Room Name"
               />
             </div>
@@ -143,7 +152,7 @@
                 >Room Type</label
               >
               <select
-                name=""
+                name="room_type"
                 id=""
                 class="
                   py-2
@@ -219,7 +228,7 @@
                 >
                   <input
                     type="checkbox"
-                    name="toggle"
+                    name="status"
                     id="toggle"
                     class="
                       toggle-checkbox

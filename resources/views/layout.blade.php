@@ -26,6 +26,7 @@
             </svg>
           </button>
         </div>
+        @if (Session::has('admin'))
         <ul
           class="
             hidden
@@ -45,7 +46,7 @@
           <li>
             <a
               class="text-sm text-white hover:text-gray-100"
-              href="/room/edit"
+              href="/room/list"
               >View Rooms</a
             >
           </li>
@@ -59,7 +60,7 @@
           <li>
             <a
               class="text-sm text-white hover:text-gray-100"
-              href="/building/edit"
+              href="/building/list"
               >View Building</a
             >
           </li>
@@ -73,7 +74,7 @@
           <li>
             <a
               class="text-sm text-white hover:text-gray-100"
-              href="/level/edit"
+              href="/level/list"
               >View Level</a
             >
           </li>
@@ -85,6 +86,16 @@
             >
           </li>
         </ul>
+        @endif
+        <div>
+          @if (Session::has('admin'))
+          <a href="/admin/logout">
+          <button class="rounded-lg bg-white text-red-500 p-2 text-lg">
+            LogOut
+          </button>
+          </a>
+          @endif
+        </div>
       </nav>
       <div class="navbar-menu relative z-50 hidden">
         <div class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
@@ -129,6 +140,7 @@
             </button>
           </div>
           <div>
+            @if (Session::has('admin'))
             <ul>
               <li class="mb-1">
                 <a
@@ -236,6 +248,7 @@
                 >
               </li>
             </ul>
+            @endif
           </div>
         </nav>
       </div>

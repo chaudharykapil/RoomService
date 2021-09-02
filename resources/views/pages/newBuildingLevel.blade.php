@@ -1,6 +1,10 @@
 @extends('..layout')
   @section('content')  
-
+  @if(Session::has('message'))
+    <script>
+      alert('{{Session::get("message")}}')
+    </script>
+  @endif
       <!-- component -->
       <div class="flex items-center justify-center">
         <div
