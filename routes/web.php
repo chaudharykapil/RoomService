@@ -23,9 +23,9 @@ Route::get('/room/delete/{id}',[RoomController::class,'deleteRoom']);
 Route::get('/building/new',[BuildingController::class,'AddBuildingPage']);
 Route::post('/building/new',[BuildingController::class,'createBuilding']);
 Route::get('/building/edit/{id}',[BuildingController::class,'EditBuildingPage']);
-Route::post('/building/edit/{id}',[BuildingController::class,'EditBuildingPage']);
+Route::post('/building/edit/{id}',[BuildingController::class,'updateBuilding']);
 Route::get('/building/list',[BuildingController::class,'ListBuildingPage']);
-Route::get('/building/delete/{id}',[BuildingController::class,'EditBuildingPage']);
+Route::get('/building/delete/{id}',[BuildingController::class,'deleteBuilding']);
 //<-----------------------------------------Routes for Levels ---------------------------->
 Route::get('/level/new',[LevelController::class,'AddLevelPage']);
 Route::post('/level/new',[LevelController::class,'createLevel']);
