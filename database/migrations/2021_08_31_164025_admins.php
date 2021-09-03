@@ -19,6 +19,16 @@ class Admins extends Migration
             $table->string("password",50);
             $table->string("provider")->default("");
         });
+        /*
+        ** Insert admin email and password **
+        ** Add your email and password here before migrate the table **
+        */
+        DB::table('admins')->insert(
+            array(
+                'email' => 'abc@test.com',
+                'password' => '123'
+            )
+        );
     }
 
     /**
