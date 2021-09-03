@@ -22,11 +22,12 @@
           <div class="flex justify-center">
             <div class="flex">
               <h1 class="text-gray-600 font-semibold md:text-2xl text-xl">
-                View Level
+                Edit Level
               </h1>
             </div>
           </div>
-          <form action="" method="post">
+          <form action="/level/edit/{{$level->id}}" method="post">
+            @csrf
           <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
             <div class="grid grid-cols-1">
               <label
@@ -50,10 +51,43 @@
                   focus:ring-red-500
                   focus:border-transparent
                 "
+                name="build_id"
+                value="{{$level->build_id}}"
                 type="number"
                 placeholder="Block_11"
               />
             </div>
+            <div class="grid grid-cols-1">
+              <label
+                class="
+                  uppercase
+                  md:text-sm
+                  text-xs text-gray-500 text-light
+                  font-semibold
+                "
+                >Level No.</label
+              >
+              <input
+                class="
+                  py-2
+                  px-3
+                  rounded-lg
+                  border-2 border-red-300
+                  mt-1
+                  focus:outline-none
+                  focus:ring-2
+                  focus:ring-red-500
+                  focus:border-transparent
+                "
+                name="level_no"
+                value="{{$level->level_no}}"
+                type="number"
+                placeholder="1"
+              />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
             <div class="grid grid-cols-1">
               <label
                 class="
@@ -76,12 +110,13 @@
                   focus:ring-red-500
                   focus:border-transparent
                 "
+                name="level_name"
+                value="{{$level->level_name}}"
                 type="text"
                 placeholder="1"
               />
             </div>
           </div>
-
           <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
             <div class="grid grid-cols-1">
               <label
@@ -128,7 +163,7 @@
                 >
                   <input
                     type="checkbox"
-                    name="toggle"
+                    name="status"
                     id="toggle"
                     class="
                       toggle-checkbox
@@ -142,6 +177,9 @@
                       appearance-none
                       cursor-pointer
                     "
+                    @if ($level->status)
+                        checked
+                    @endif
                   />
                   <label
                     for="toggle"
@@ -166,7 +204,7 @@
                 class="
                   text-white
                   rounded-lg
-                  bg-red-500
+                  bg-green-500
                   shadow-lg
                   block
                   md:inline-block
@@ -174,12 +212,15 @@
                   h-10
                   mt-2
                 "
+                type="submit"
               >
                 🖫 Update
               </button>
             </div>
             <div class="grid grid-cols-1">
+              <a href="/level/delete/{{$level->id}}">
               <button
+                type="button"
                 class="
                   text-white
                   rounded-lg
@@ -194,6 +235,7 @@
               >
                 🖫 Delete
               </button>
+              </a>
             </div>
           </div>
         </form>
