@@ -28,7 +28,7 @@
               </h1>
             </div>
           </div>
-          <form action="/room/edit/{{$room->build_id}}" method="post">
+          <form action="/room/edit/{{$room->id}}" method="post">
             @csrf
           <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
             <div class="grid grid-cols-1">

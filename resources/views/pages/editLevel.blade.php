@@ -53,7 +53,7 @@
                 "
                 name="build_id"
                 value="{{$level->build_id}}"
-                type="number"
+                type="text"
                 placeholder="Block_11"
               />
             </div>
@@ -200,6 +200,26 @@
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
             <div class="grid grid-cols-1">
+              <a href="/level/delete/{{$level->id}}">
+                <button
+                  type="button"
+                  class="
+                    text-white
+                    rounded-lg
+                    bg-red-500
+                    shadow-lg
+                    block
+                    md:inline-block
+                    w-24
+                    h-10
+                    mt-2
+                  "
+                >
+                  🖫 Delete
+                </button>
+                </a>
+            </div>
+            <div class="grid grid-cols-1">
               <button
                 class="
                   text-white
@@ -216,26 +236,6 @@
               >
                 🖫 Update
               </button>
-            </div>
-            <div class="grid grid-cols-1">
-              <a href="/level/delete/{{$level->id}}">
-              <button
-                type="button"
-                class="
-                  text-white
-                  rounded-lg
-                  bg-red-500
-                  shadow-lg
-                  block
-                  md:inline-block
-                  w-24
-                  h-10
-                  mt-2
-                "
-              >
-                🖫 Delete
-              </button>
-              </a>
             </div>
           </div>
         </form>

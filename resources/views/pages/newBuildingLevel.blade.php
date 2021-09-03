@@ -51,6 +51,7 @@
                   focus:ring-red-500
                   focus:border-transparent
                 "
+                name="build_id"
                 type="text"
                 placeholder="Block 11"
               />
@@ -77,6 +78,7 @@
                   focus:ring-red-500
                   focus:border-transparent
                 "
+                name="level_no"
                 type="text"
                 placeholder="1"
               />
@@ -106,6 +108,7 @@
                   focus:ring-red-500
                   focus:border-transparent
                 "
+                name="level_name"
                 type="text"
                 placeholder="Level Name"
               />
@@ -136,7 +139,7 @@
                 >
                   <input
                     type="checkbox"
-                    name="toggle"
+                    name="status"
                     id="toggle"
                     class="
                       toggle-checkbox
