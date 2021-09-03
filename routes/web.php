@@ -30,6 +30,6 @@ Route::get('/building/delete/{id}',[BuildingController::class,'EditBuildingPage'
 Route::get('/level/new',[LevelController::class,'AddLevelPage']);
 Route::post('/level/new',[LevelController::class,'createLevel']);
 Route::get('/level/edit/{id}',[LevelController::class,'EditLevelPage']);
-Route::post('/level/edit/{id}',[LevelController::class,'EditLevelPage']);
+Route::post('/level/edit/{id}',[LevelController::class,'updateLevel']);
 Route::get('/level/list',[LevelController::class,'ListLevelPage']);
-Route::get('/level/delete/{id}',[LevelController::class,'EditLevelPage']);
+Route::get('/level/delete/{id}',[LevelController::class,'deleteLevel']);
