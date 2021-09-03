@@ -52,7 +52,7 @@
                   focus:border-transparent
                 "
                 type="text"
-                name="build_id"
+                name="b_id"
                 placeholder="Block_11"
               />
             </div>
@@ -79,7 +79,7 @@
                   focus:border-transparent
                 "
                 type="text"
-                name="build_name"
+                name="b_name"
                 placeholder="Block 11"
               />
             </div>
