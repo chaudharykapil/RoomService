@@ -7,42 +7,94 @@ use App\Models\Building;
 
 class BuildingController extends Controller
 {
+    //----------------------------------------------------------------------------------------------------    
     public function AddBuildingPage()
     {
         if(!session('admin')){
+            session()->flash("message","Please Login First");
             return redirect('/');
         }
         return view("pages/newBuilding");
     }
-    public function EditBuildingPage()
-    {
-        if(!session('admin')){
-            return redirect('/');
-        }
-        return view("pages/viewBuilding");
-    }
+//----------------------------------------------------------------------------------------------------
     public function createBuilding(Request $req)
     {
         if(!session('admin')){
+            session()->flash("message","Please Login First");
             return redirect('/');
         }
-        $build = new Building;
         $data = $req->input();
-        $build->b_id = $data['build_id'];
-        $build->b_name = $data['build_name'];
+        $newbuilding = new Building;
+        $newbuilding->b_id = $data['b_id'];
+        $newbuilding->b_name = $data['b_name'];
         try {
-            $build->status = $data['status'] == "on";
+            $newbuilding->status = $data['status'] == 'on';
         } catch (\Throwable $th) {
-            $build->status = false;
+            $newbuilding->status = false;
         }
-        $build->save();
-        return redirect('/building/new');
+        $newbuilding->save();
+        session()->flash("message","Building added");
+        return redirect("/building/list");
     }
+//----------------------------------------------------------------------------------------------------    
+    public function EditBuildingPage($id)
+    {
+        if(!session('admin')){
+            session()->flash("message","Please Login First");
+            return redirect('/');
+        }
+        $building = Building::find($id);
+        if(!$building){
+            abort(404);
+        }
+        return view("pages/editBuilding",compact("building"));
+    }
+//----------------------------------------------------------------------------------------------------
+    public function updateBuilding($id,Request $req)
+    {
+        if(!session('admin')){
+            session()->flash("message","Please Login First");
+            return redirect('/');
+        }
+        $building = Building::find($id);
+        if(!$building){
+            abort(404);
+        }
+        $data = $req->input();
+        $building->b_id = $data['b_id'];
+        $building->b_name = $data['b_name'];
+        try {
+            $building->status = $data['status'] == 'on';
+        } catch (\Throwable $th) {
+            $building->status = false;
+        }
+        $building->save();
+        session()->flash("message","Building update");
+        return redirect('/building/list');
+    }
+//----------------------------------------------------------------------------------------------------
+    public function deleteBuilding($id,Request $req)
+    {
+        if(!session('admin')){
+            session()->flash("message","Please Login First");
+            return redirect('/');
+        }
+        $building = Building::find($id);
+        if(!$building){
+            abort(404);
+        }
+        $building->delete();
+        session()->flash("message","Building deleted");
+        return redirect('/building/list');
+    }
+//----------------------------------------------------------------------------------------------------
     public function ListBuildingPage()
     {
         if(!session('admin')){
+            session()->flash("message","Please Login First");
             return redirect('/');
         }
-        return view("pages/buildingList");
+        $all_buildings = Building::all();
+        return view("pages/buildingList",compact("all_buildings"));
     }
 }
