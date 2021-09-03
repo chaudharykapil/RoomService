@@ -7,6 +7,7 @@ use App\Models\Level;
 
 class LevelController extends Controller
 {
+//----------------------------------------------------------------------------------------------------    
     public function AddLevelPage()
     {
         if(!session('admin')){
@@ -15,7 +16,7 @@ class LevelController extends Controller
         }
         return view("pages/newBuildingLevel");
     }
-
+//----------------------------------------------------------------------------------------------------
     public function createLevel(Request $req)
     {
         if(!session('admin')){
@@ -36,7 +37,7 @@ class LevelController extends Controller
         session()->flash("message","Level added");
         return redirect("/level/list");
     }
-    
+//----------------------------------------------------------------------------------------------------    
     public function EditLevelPage($id)
     {
         if(!session('admin')){
@@ -49,7 +50,7 @@ class LevelController extends Controller
         }
         return view("pages/editLevel",compact("level"));
     }
-
+//----------------------------------------------------------------------------------------------------
     public function updateLevel($id,Request $req)
     {
         if(!session('admin')){
@@ -73,7 +74,7 @@ class LevelController extends Controller
         session()->flash("message","Level update");
         return redirect('/level/list');
     }
-
+//----------------------------------------------------------------------------------------------------
     public function deleteLevel($id,Request $req)
     {
         if(!session('admin')){
@@ -88,7 +89,7 @@ class LevelController extends Controller
         session()->flash("message","Level deleted");
         return redirect('/level/list');
     }
-
+//----------------------------------------------------------------------------------------------------
     public function ListLevelPage()
     {
         if(!session('admin')){
