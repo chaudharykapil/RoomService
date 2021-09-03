@@ -26,7 +26,8 @@
               </h1>
             </div>
           </div>
-          <form action="" method="post">
+          <form action="/building/edit/{{$building->id}}" method="post">
+            @csrf
           <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
             <div class="grid grid-cols-1">
               <label
@@ -50,6 +51,8 @@
                   focus:ring-red-500
                   focus:border-transparent
                 "
+                name="b_id"
+                value="{{$building->b_id}}"
                 type="text"
                 placeholder="Block_11"
               />
@@ -76,6 +79,8 @@
                   focus:ring-red-500
                   focus:border-transparent
                 "
+                name="b_name"
+                value="{{$building->b_name}}"
                 type="text"
                 placeholder="Block 11"
               />
@@ -128,7 +133,7 @@
                 >
                   <input
                     type="checkbox"
-                    name="toggle"
+                    name="status"
                     id="toggle"
                     class="
                       toggle-checkbox
@@ -142,6 +147,9 @@
                       appearance-none
                       cursor-pointer
                     "
+                    @if ($building->status)
+                        checked
+                    @endif
                   />
                   <label
                     for="toggle"
@@ -162,25 +170,9 @@
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
             <div class="grid grid-cols-1">
+              <a href="/building/delete/{{$building->id}}">
               <button
-                class="
-                  text-white
-                  rounded-lg
-                  bg-red-500
-                  shadow-lg
-                  block
-                  md:inline-block
-                  w-24
-                  h-10
-                  mt-2
-                "
-              >
-                🖫 Update
-              </button>
-            </div>
-            <div class="grid grid-cols-1">
-              <button
-              type="submit"
+              type="button"
                 class="
                   text-white
                   rounded-lg
@@ -194,6 +186,25 @@
                 "
               >
                 🖫 Delete
+              </button>
+              </a>
+            </div>
+            <div class="grid grid-cols-1">
+              <button
+              type="submit"
+                class="
+                  text-white
+                  rounded-lg
+                  bg-green-500
+                  shadow-lg
+                  block
+                  md:inline-block
+                  w-24
+                  h-10
+                  mt-2
+                "
+              >
+                🖫 Update
               </button>
             </div>
           </div>
