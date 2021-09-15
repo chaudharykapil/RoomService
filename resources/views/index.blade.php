@@ -7,18 +7,18 @@
     @endif
       <h1 class="self-center text-3xl text-red-500">Admin Login</h1>
       <div class="max-h-screen flex justify-center">
-        <div class="py-6 px-8 mt-20 bg-white rounded shadow-xl">
+        <div class="py-6 px-8 mt-1 bg-white rounded shadow-xl">
           <form action="/admin/login" method="POST">
             @csrf
             <div class="mb-6">
               <label for="email" class="block text-gray-800 font-bold"
-                >Email</label
+                >Username / User Id</label
               >
               <input
                 type="text"
-                name="email"
+                name="userid"
                 id="email"
-                placeholder="@email"
+                placeholder="Username or User Id"
                 class="
                   w-full
                   border border-gray-300
@@ -88,26 +88,6 @@
             text-center
             rounded
           ">
-            <a href="/admin/login/provider">
-            <button
-              class="
-                cursor-pointer
-                py-2
-                px-4
-                block
-                mt-6
-                bg-white
-                text-red-500
-                font-bold
-                w-full
-                text-center
-                rounded
-                border-red-500 border-2
-              "
-            >
-              Sign In with Google
-            </button>
-            </a>
           
         </div>
       </div>

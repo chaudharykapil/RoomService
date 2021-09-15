@@ -38,11 +38,7 @@
             lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6
           "
         >
-          <li>
-            <a class="text-sm text-white hover:text-gray-100" href="/"
-              >Home</a
-            >
-          </li>
+          
           <li>
             <a
               class="text-sm text-white hover:text-gray-100"
@@ -142,21 +138,7 @@
           <div>
             @if (Session::has('admin'))
             <ul>
-              <li class="mb-1">
-                <a
-                  class="
-                    block
-                    p-4
-                    text-sm
-                    font-semibold
-                    text-white
-                    hover:bg-blue-50 hover:text-white
-                    rounded
-                  "
-                  href="/"
-                  >Home</a
-                >
-              </li>
+              
               <li class="mb-1">
                 <a
                   class="
@@ -311,9 +293,7 @@
 			md:justify-between
 			"
 			>
-				<p>Address</p>
-				<p>Email</p>
-				<p>Contact No.</p>
+				
 			</footer>
 		</div>
 	</body>

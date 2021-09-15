@@ -16,12 +16,12 @@ class AdminController extends Controller
     public function Login(Request $req)
     {
         
-        $email = $req->email;
+        $userid = $req->userid;
         $pass = $req->password;
-        $adm = Admin::where("email","=",$email)->get();
+        $adm = Admin::where("userid","=",$userid)->get();
         if(count($adm)){
-            if ($adm[0]->password == $pass && $adm[0]->provider == '') {
-                session(["admin"=>$adm[0]->email]);
+            if ($adm[0]->password == $pass) {
+                session(["admin"=>$adm[0]->userid]);
                 return redirect('/');
             }
             else {
@@ -40,25 +40,5 @@ class AdminController extends Controller
         }
         return "already logout";
     }
-    public function redirectToProvider()
-    {
-        return Socialite::driver('google')->stateless()->redirect();
-    }
-    public function GoogleCallback()
-    {
-        $user = Socialite::driver('google')->stateless()->user();
-        $adm = Admin::where("email",'=',$user->getEmail())->get();
-        if (count($adm)){
-            session(["admin"=>$adm[0]->email]);
-            return redirect('/');
-        }
-        $newadm = new Admin;
-        $newadm->email =  $user->getEmail();
-        $newadm->password = "";
-        $newadm->provider = "google";
-        $newadm->save();
-        session(["admin"=>$user->getEmail()]);
-        return redirect('/');
-
-    }
+    
 }
