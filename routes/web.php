@@ -9,8 +9,6 @@ use App\Http\Controllers\LevelController;
 //<-----------------------------------------Routes for Admin ---------------------------->
 Route::get('/',[AdminController::class,'showLoginPage']);
 Route::post('/admin/login',[AdminController::class,'Login']);
-Route::get('/admin/login/provider',[AdminController::class,'redirectToProvider']);
-Route::get('/admin/login/google/c',[AdminController::class,'GoogleCallback']);
 Route::get('/admin/logout',[AdminController::class,'LogOut']);
 //<-----------------------------------------Routes for Rooms ---------------------------->
 Route::get('/room/new',[RoomController::class,'AddRoomPage']);
@@ -33,3 +31,13 @@ Route::get('/level/edit/{id}',[LevelController::class,'EditLevelPage']);
 Route::post('/level/edit/{id}',[LevelController::class,'updateLevel']);
 Route::get('/level/list',[LevelController::class,'ListLevelPage']);
 Route::get('/level/delete/{id}',[LevelController::class,'deleteLevel']);
+
+Route::get('/test', function () {
+    return view("pages/test");
+});
+Route::get('/chat/send/{id}', function ($id) {
+    return;
+});
+Route::get('/chat/recieve/{id}', function ($id) {
+    return;
+});

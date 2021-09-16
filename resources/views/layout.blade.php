@@ -281,7 +281,52 @@
 
 			@yield('content')
 
-
+      <div class="absolute bottom-0 right-0 h-9/10 bg-red-600 w-1/4 mb-0 mr-5 rounded-lg">
+        <div class="flex flex-row ml-5">
+        <h3 class="text-left text-lg font-bold text-white w-80">Chat with Admin</h3>
+        <span id="vis_btn_span"><button class = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 m-1 px-4 rounded" id="visibilitybtn" onclick="showchatbox()">^</button></span>
+        </div>
+        <div class="bg-white m-5 p-2 h-100 w-1/1" id="chatbox" hidden>
+          <div class="bg-gray-200 m-1 w-1/1 h-98 py-2 px-1  overflow-y-scroll">
+            <p class="mb-3 flex flex-row "><span class="bg-blue-500 p-1 text-white rounded-xl" >hy</span></p>
+            <p class="mb-3 flex flex-row-reverse "><span class="bg-green-500 p-1 text-white rounded-xl" >hy how are you</span></p>
+          </div>
+          <div class="flex flex-row">
+            <textarea class="text-xl mx-1 w-72 border-2 rounded-xl focus:outline-none  px-3 border-black" rows="1" placeholder="type message"></textarea>
+            <button class = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="button">send</button>
+          </div>
+        </div>
+      </div>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+      <script>
+        
+        function createShowBtn() {
+          let btn = document.createElement("button")
+          btn.setAttribute("class","bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 m-1 px-4 rounded")
+          btn.setAttribute("id","visibilitybtn")
+          btn.setAttribute("onclick","showchatbox()")
+          btn.innerHTML = "^"
+          return btn
+        }
+        function createhideBtn() {
+          let btn = document.createElement("button")
+          btn.setAttribute("class","bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 m-1 px-4 rounded")
+          btn.setAttribute("id","visibilitybtn")
+          btn.setAttribute("onclick","hidechatbox()")
+          btn.innerHTML = "V"
+          return btn
+        }
+        function hidechatbox() {
+          let chatbox = document.getElementById("chatbox")
+          document.getElementById("vis_btn_span").replaceChild(createShowBtn(),document.getElementById("visibilitybtn"))
+          chatbox.setAttribute("hidden",true)     
+        }
+        function showchatbox() {
+          let chatbox = document.getElementById("chatbox")
+          document.getElementById("vis_btn_span").replaceChild(createhideBtn(),document.getElementById("visibilitybtn"))
+          chatbox.removeAttribute("hidden")         
+        }
+      </script>
 			<footer
 			class="
 			p-4
