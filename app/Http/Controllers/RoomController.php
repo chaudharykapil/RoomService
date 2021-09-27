@@ -13,7 +13,8 @@ class RoomController extends Controller
             session()->flash("message","Please Login First");
             return redirect('/');
         }
-        return view("pages/newRoom");
+        $sender_id = 1;
+        return view("pages/newRoom",compact("sender_id"));
     }
 
     public function createRoom(Request $req)
@@ -98,6 +99,7 @@ class RoomController extends Controller
             return redirect('/');
         }
         $all_rooms = Room::all();
-        return view("pages/roomList",compact("all_rooms"));
+        $send_to = 2;
+        return view("pages/roomList",compact("all_rooms","send_to"));
     }
 }

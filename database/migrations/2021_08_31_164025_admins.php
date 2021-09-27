@@ -24,8 +24,14 @@ class Admins extends Migration
         */
         DB::table('admins')->insert(
             array(
-                'userid' => 'admin',
+                'userid' => 'admin1',
                 'password' => '123'
+            )
+        );
+        DB::table('admins')->insert(
+            array(
+                'userid' => 'admin2',
+                'password' => '789'
             )
         );
     }
