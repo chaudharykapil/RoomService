@@ -5,7 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\BuildingController;
 use App\Http\Controllers\LevelController;
-use App\Http\Controllers\ChatsController;
+use App\Http\Controllers\ChatController;
 
 //<-----------------------------------------Routes for Admin ---------------------------->
 
@@ -38,3 +38,10 @@ Route::get('/level/edit/{id}',[LevelController::class,'EditLevelPage']);
 Route::post('/level/edit/{id}',[LevelController::class,'updateLevel']);
 Route::get('/level/list',[LevelController::class,'ListLevelPage']);
 Route::get('/level/delete/{id}',[LevelController::class,'deleteLevel']);
+
+//
+Route::post('/sendmessage',[ChatController::class,'SendMessage']);
+Route::get('/user', function () {
+    $send_to = 1;
+    return view("pages/userChat",compact("send_to"));
+});
