@@ -39,7 +39,8 @@
                 "
                 >Building ID</label
               >
-              <input
+              <select
+                id="building_list"
                 class="
                   py-2
                   px-3
@@ -54,7 +55,7 @@
                 type="text"
                 name="build_id"
                 placeholder="Block 1"
-              />
+              ></select>
             </div>
             <div class="grid grid-cols-1">
               <label
@@ -66,7 +67,9 @@
                 "
                 >Level</label
               >
-              <input
+              <select
+                disabled
+                id="level_list"
                 class="
                   py-2
                   px-3
@@ -81,7 +84,7 @@
                 type="number"
                 name="level_no"
                 placeholder="level no."
-              />
+              ></select>
             </div>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
@@ -283,4 +286,12 @@
         </form>
         </div>
       </div>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+      <script src="{{asset('js/Listapi.js')}}"></script>
+      <script>
+        $(document).ready(()=>{
+          setBuldingId_List()
+          ListenBuildingChange()
+        })
+      </script>
   @endsection

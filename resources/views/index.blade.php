@@ -88,7 +88,7 @@
             text-center
             rounded
           ">
-          
+          <p class="text-right"><a href="#" class="hover:underline hover:text-red-500">Forgot Password?</a></p>
         </div>
       </div>
   @endsection

@@ -184,7 +184,7 @@
                     hover:bg-blue-50 hover:text-white
                     rounded
                   "
-                  href="/building/edit"
+                  href="/building/list"
                   >View Building</a
                 >
               </li>
@@ -214,7 +214,7 @@
                     hover:bg-blue-50 hover:text-white
                     rounded
                   "
-                  href="/level/edit"
+                  href="/level/list"
                   >View Level</a
                 >
               </li>

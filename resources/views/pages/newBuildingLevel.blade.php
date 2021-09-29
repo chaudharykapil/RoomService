@@ -39,7 +39,8 @@
                 "
                 >Building
               </label>
-              <input
+              <select
+                id="building_list"
                 class="
                   py-2
                   px-3
@@ -54,7 +55,8 @@
                 name="build_id"
                 type="text"
                 placeholder="Block 11"
-              />
+              >
+              </select>
             </div>
             <div class="grid grid-cols-1">
               <label
@@ -79,7 +81,7 @@
                   focus:border-transparent
                 "
                 name="level_no"
-                type="text"
+                type="number"
                 placeholder="1"
               />
             </div>
@@ -192,4 +194,11 @@
         </form>
         </div>
       </div>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+      <script src="{{asset('js/Listapi.js')}}"></script>
+      <script>
+        $(document).ready(()=>{
+          setBuldingId_List()
+        })
+      </script>
   @endsection
