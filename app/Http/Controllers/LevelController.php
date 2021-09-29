@@ -99,4 +99,18 @@ class LevelController extends Controller
         $all_levels = Level::all();
         return view("pages/levelList",compact("all_levels"));
     }
+//----------------------------------------------------------------------------------------------------
+    public function GetLevelId($id)
+    {
+        if(!session('admin')){
+            session()->flash("message","Please Login First");
+            return redirect('/');
+        }
+        $all_levels = Level::Where("build_id","=",$id)->get();
+        $level_list = [];
+        for ($i=0; $i < count($all_levels); $i++) { 
+            array_push($level_list,$all_levels[$i]["level_no"]);
+        }
+        return $level_list;
+    }
 }

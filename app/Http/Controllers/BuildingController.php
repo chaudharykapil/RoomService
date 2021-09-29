@@ -97,4 +97,19 @@ class BuildingController extends Controller
         $all_buildings = Building::all();
         return view("pages/buildingList",compact("all_buildings"));
     }
+//---------------------------------------------------------------------------------------------------
+    public function GetBuildingId()
+    {
+        if(!session('admin')){
+            session()->flash("message","Please Login First");
+            return redirect('/');
+        }
+        $id_list = [];
+        
+        $all_buildings = Building::all();
+        for ($i=0; $i < count($all_buildings); $i++) { 
+            array_push($id_list,$all_buildings[$i]["b_id"]);
+        }
+        return $id_list;
+    }
 }
