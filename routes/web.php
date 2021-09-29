@@ -39,9 +39,12 @@ Route::post('/level/edit/{id}',[LevelController::class,'updateLevel']);
 Route::get('/level/list',[LevelController::class,'ListLevelPage']);
 Route::get('/level/delete/{id}',[LevelController::class,'deleteLevel']);
 
-//
+//<----------------------------------------Routes for Chat ---------------------------------->
 Route::post('/sendmessage',[ChatController::class,'SendMessage']);
 Route::get('/user', function () {
     $send_to = 1;
     return view("pages/userChat",compact("send_to"));
 });
+//<----------------------------------------Routes for Api ------------------------------------>
+Route::get('/api/getBuildings',[BuildingController::class,"GetBuildingId"]);
+Route::get('/api/getLevels/{id}',[LevelController::class,"GetLevelId"]);
