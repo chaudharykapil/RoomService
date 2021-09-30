@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('./staff/layout')
   @section('content')
     <div class="flex flex-1 flex-col px-24 py-5">
       <h1 class="font-sans text-2xl text-center font-bold"><span class="font-sans text-4xl text-blue-600 text-center font-bold">B</span>ook <span class="font-sans text-4xl text-blue-600 text-center font-bold">Y</span>our <span class="font-sans text-4xl text-blue-600 text-center font-bold">R</span>oom</h1>

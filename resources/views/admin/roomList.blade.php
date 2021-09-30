@@ -1,4 +1,5 @@
-@yield('content')
+@extends('./admin/layout')
+  @section('content')
     @if(Session::has('message'))
       <script>
         alert('{{Session::get("message")}}')

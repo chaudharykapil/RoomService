@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('./staff/layout')
   @section('content')
 
     <div class="flex flex-1 flex-col px-24 py-5">
