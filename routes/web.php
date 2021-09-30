@@ -43,7 +43,7 @@ Route::get('/level/delete/{id}',[LevelController::class,'deleteLevel']);
 Route::post('/sendmessage',[ChatController::class,'SendMessage']);
 Route::get('/user', function () {
     $send_to = 1;
-    return view("pages/userChat",compact("send_to"));
+    return view("admin/userChat",compact("send_to"));
 });
 //<----------------------------------------Routes for Api ------------------------------------>
 Route::get('/api/getBuildings',[BuildingController::class,"GetBuildingId"]);
