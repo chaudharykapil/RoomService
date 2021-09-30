@@ -14,7 +14,7 @@ class BuildingController extends Controller
             session()->flash("message","Please Login First");
             return redirect('/');
         }
-        return view("pages/newBuilding");
+        return view("admin/newBuilding");
     }
 //----------------------------------------------------------------------------------------------------
     public function createBuilding(Request $req)
@@ -47,7 +47,7 @@ class BuildingController extends Controller
         if(!$building){
             abort(404);
         }
-        return view("pages/editBuilding",compact("building"));
+        return view("admin/editBuilding",compact("building"));
     }
 //----------------------------------------------------------------------------------------------------
     public function updateBuilding($id,Request $req)

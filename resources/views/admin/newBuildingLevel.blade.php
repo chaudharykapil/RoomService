@@ -1,10 +1,10 @@
-@extends('..layout')
-  @section('content')
+@extends('layout')
+  @section('content')  
   @if(Session::has('message'))
-      <script>
-        alert('{{Session::get("message")}}')
-      </script>
-    @endif
+    <script>
+      alert('{{Session::get("message")}}')
+    </script>
+  @endif
       <!-- component -->
       <div class="flex items-center justify-center">
         <div
@@ -22,11 +22,11 @@
           <div class="flex justify-center">
             <div class="flex">
               <h1 class="text-gray-600 font-semibold md:text-2xl text-xl">
-                New Room
+                New Building Level
               </h1>
             </div>
           </div>
-          <form action="/room/new" method="POST">
+          <form action="" method="post">
             @csrf
           <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
             <div class="grid grid-cols-1">
@@ -37,8 +37,8 @@
                   text-xs text-gray-500 text-light
                   font-semibold
                 "
-                >Building ID</label
-              >
+                >Building
+              </label>
               <select
                 id="building_list"
                 class="
@@ -52,10 +52,11 @@
                   focus:ring-red-500
                   focus:border-transparent
                 "
-                type="text"
                 name="build_id"
-                placeholder="Block 1"
-              ></select>
+                type="text"
+                placeholder="Block 11"
+              >
+              </select>
             </div>
             <div class="grid grid-cols-1">
               <label
@@ -67,9 +68,7 @@
                 "
                 >Level</label
               >
-              <select
-                disabled
-                id="level_list"
+              <input
                 class="
                   py-2
                   px-3
@@ -81,40 +80,14 @@
                   focus:ring-red-500
                   focus:border-transparent
                 "
-                type="number"
                 name="level_no"
-                placeholder="level no."
-              ></select>
-            </div>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
-            <div class="grid grid-cols-1">
-              <label
-                class="
-                  uppercase
-                  md:text-sm
-                  text-xs text-gray-500 text-light
-                  font-semibold
-                "
-                >Room Number</label
-              >
-              <input
-                class="
-                  py-2
-                  px-3
-                  rounded-lg
-                  border-2 border-red-300
-                  mt-1
-                  focus:outline-none
-                  focus:ring-2
-                  focus:ring-red-500
-                  focus:border-transparent
-                "
                 type="number"
-                name="room_no"
-                placeholder="room no."
+                placeholder="1"
               />
             </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
             <div class="grid grid-cols-1">
               <label
                 class="
@@ -123,7 +96,7 @@
                   text-xs text-gray-500 text-light
                   font-semibold
                 "
-                >Room Name</label
+                >Level Name</label
               >
               <input
                 class="
@@ -137,73 +110,10 @@
                   focus:ring-red-500
                   focus:border-transparent
                 "
+                name="level_name"
                 type="text"
-                name="room_name"
-                placeholder="Room Name"
+                placeholder="Level Name"
               />
-            </div>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
-            <div class="grid grid-cols-1">
-              <label
-                class="
-                  uppercase
-                  md:text-sm
-                  text-xs text-gray-500 text-light
-                  font-semibold
-                "
-                >Room Type</label
-              >
-              <select
-                name="room_type"
-                id=""
-                class="
-                  py-2
-                  px-3
-                  rounded-lg
-                  border-2 border-red-300
-                  mt-1
-                  focus:outline-none focus:ring-2 focus:ring-red-500
-                "
-              >
-                <option value="Any Room" label="Any Room"></option>
-                <option value="Computer Room" label="Computer Room"></option>
-                <option value="Drama Studio" label="Drama Studio"></option>
-                <option
-                  value="Fixed Furniture"
-                  label="Fixed Furniture"
-                ></option>
-                <option
-                  value="Flat Lecture Room 40+"
-                  label="Flat Lecture Room 40+"
-                ></option>
-                <option value="Flat  Room " label="Flat  Room "></option>
-                <option
-                  value="Flat Seminar Room "
-                  label="Flat Seminar Room "
-                ></option>
-                <option
-                  value="Language Laboratory"
-                  label="Language Laboratory"
-                ></option>
-                <option value="Meeting Room" label="Meeting Room"></option>
-                <option
-                  value="Music Practice Room"
-                  label="Music Practice Room"
-                ></option>
-                <option value="Rooms 1-40" label="Rooms 1-40"></option>
-                <option value="Rooms 41-100" label="Rooms 41-100"></option>
-                <option value="Rooms over 150" label="Rooms over 150"></option>
-                <option value="Teaching All" label="Teaching All"></option>
-                <option
-                  value="Tiered Lecture Theaters"
-                  label="Tiered Lecture Theaters"
-                ></option>
-                <option
-                  value="Video Conference Room"
-                  label="Video Conference Room"
-                ></option>
-              </select>
             </div>
             <div class="grid grid-cols-1">
               <label
@@ -262,11 +172,9 @@
                 <label for="toggle" class="text-lg text-gray-700">Active</label>
               </div>
             </div>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
             <div class="grid grid-cols-1">
               <button
-                type="submit"
+              type="submit"
                 class="
                   text-white
                   rounded-lg
@@ -291,7 +199,6 @@
       <script>
         $(document).ready(()=>{
           setBuldingId_List()
-          ListenBuildingChange()
         })
       </script>
   @endsection

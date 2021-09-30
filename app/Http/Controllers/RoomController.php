@@ -14,7 +14,7 @@ class RoomController extends Controller
             return redirect('/');
         }
         $sender_id = 1;
-        return view("pages/newRoom",compact("sender_id"));
+        return view("admin/newRoom",compact("sender_id"));
     }
 
     public function createRoom(Request $req)
@@ -50,7 +50,7 @@ class RoomController extends Controller
         if(!$room){
             abort(404);
         }
-        return view("pages/editRoom",compact("room"));
+        return view("admin/editRoom",compact("room"));
     }
 
     public function updateRoom($id,Request $req)
@@ -100,6 +100,6 @@ class RoomController extends Controller
         }
         $all_rooms = Room::all();
         $send_to = 2;
-        return view("pages/roomList",compact("all_rooms","send_to"));
+        return view("admin/roomList",compact("all_rooms","send_to"));
     }
 }

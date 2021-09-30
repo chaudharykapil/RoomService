@@ -1,9 +1,9 @@
-@extends('..layout')
+@extends('layout')
   @section('content')
-    @if(Session::has('message'))
-    <script>
-      alert('{{Session::get("message")}}')
-    </script>
+  @if(Session::has('message'))
+      <script>
+        alert('{{Session::get("message")}}')
+      </script>
     @endif
       <!-- component -->
       <div class="bg-white pb-4 px-4 rounded-md w-full">
@@ -24,7 +24,7 @@
                   class="px-4 py-2 bg-gray-200"
                   style="background-color: #f8f8f8"
                 >
-                  Building
+                  Level Name
                 </th>
                 <th
                   class="px-4 py-2 bg-gray-200"
@@ -32,7 +32,12 @@
                 >
                   Building Name
                 </th>
-
+                <th
+                  class="px-4 py-2 bg-gray-200"
+                  style="background-color: #f8f8f8"
+                >
+                  Building Level
+                </th>
                 <th
                   class="px-4 py-2 bg-gray-200"
                   style="background-color: #f8f8f8"
@@ -48,16 +53,15 @@
               </tr>
             </thead>
             <tbody class="text-sm font-normal text-gray-700">
-              @foreach ($all_buildings as $building)
-
+              @foreach ($all_levels as $level)
               <tr class="hover:bg-gray-100 border-b border-gray-200 py-10">
-                <td class="px-4 py-4">{{$building->id}}</td>
-                <td class="px-4 py-4">{{$building->b_id}}</td>
-                <td class="px-4 py-4">{{$building->b_name}}</td>
-
+                <td class="px-4 py-4">{{$level->id}}</td>
+                <td class="px-4 py-4">{{$level->level_name}}</td>
+                <td class="px-4 py-4">{{$level->build_id}}</td>
+                <td class="px-4 py-4">{{$level->level_no}}</td>
                 <td class="px-4 py-4">
                   <div>
-                    @if ($building->status)
+                    @if ($level->status)
                     <label  class="text-lg text-gray-700 bg-green-300 px-2 py-2 rounded-lg"
                     >Active</label>
                     @else
@@ -66,11 +70,13 @@
                     @endif
                   </div>
                 </td>
-                <td class="px-4 py-4"><a href="/building/edit/{{$building->id}}"><button>✏️</button></a></td>
+                <td class="px-4 py-4">
+                  <a href="/level/edit/{{$level->id}}"><button>✏️</button></a>
+                </td>
               </tr>
               @endforeach
             </tbody>
           </table>
         </div>
       </div>
-    @endsection
+      @endsection

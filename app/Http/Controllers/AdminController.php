@@ -11,7 +11,7 @@ class AdminController extends Controller
         if(session("admin")){
             return redirect('/room/list');
         }
-        return view("index");
+        return view("admin/AdminLogin");
     }
     public function Login(Request $req)
     {

@@ -1,11 +1,10 @@
-@extends('..layout')
+@extends('layout')
   @section('content')
-    @if(Session::has('message'))
+  @if(Session::has('message'))
       <script>
-        alert('{{Session::pull("message")}}')
+        alert('{{Session::get("message")}}')
       </script>
     @endif
-    
       <!-- component -->
       <div class="flex items-center justify-center">
         <div
@@ -20,15 +19,14 @@
             p-4
           "
         >
-        
           <div class="flex justify-center">
             <div class="flex">
               <h1 class="text-gray-600 font-semibold md:text-2xl text-xl">
-                Edit Room
+                New Room
               </h1>
             </div>
           </div>
-          <form action="/room/edit/{{$room->id}}" method="post">
+          <form action="/room/new" method="POST">
             @csrf
           <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
             <div class="grid grid-cols-1">
@@ -41,7 +39,8 @@
                 "
                 >Building ID</label
               >
-              <input
+              <select
+                id="building_list"
                 class="
                   py-2
                   px-3
@@ -53,11 +52,10 @@
                   focus:ring-red-500
                   focus:border-transparent
                 "
-                name="build_id"
-                value="{{$room->build_id}}"
                 type="text"
+                name="build_id"
                 placeholder="Block 1"
-              />
+              ></select>
             </div>
             <div class="grid grid-cols-1">
               <label
@@ -69,7 +67,9 @@
                 "
                 >Level</label
               >
-              <input
+              <select
+                disabled
+                id="level_list"
                 class="
                   py-2
                   px-3
@@ -81,11 +81,10 @@
                   focus:ring-red-500
                   focus:border-transparent
                 "
+                type="number"
                 name="level_no"
-                value="{{$room->level_no}}"
-                type="text"
-                placeholder="1"
-              />
+                placeholder="level no."
+              ></select>
             </div>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
@@ -111,10 +110,9 @@
                   focus:ring-red-500
                   focus:border-transparent
                 "
+                type="number"
                 name="room_no"
-                value="{{$room->room_no}}"
-                type="text"
-                placeholder=" 101"
+                placeholder="room no."
               />
             </div>
             <div class="grid grid-cols-1">
@@ -139,9 +137,8 @@
                   focus:ring-red-500
                   focus:border-transparent
                 "
-                name="room_name"
-                value="{{$room->room_name}}"
                 type="text"
+                name="room_name"
                 placeholder="Room Name"
               />
             </div>
@@ -158,7 +155,7 @@
                 >Room Type</label
               >
               <select
-                
+                name="room_type"
                 id=""
                 class="
                   py-2
@@ -168,9 +165,7 @@
                   mt-1
                   focus:outline-none focus:ring-2 focus:ring-red-500
                 "
-                name="room_type"
               >
-                <option value="{{$room->room_type}}" label="{{$room->room_type}}"></option>
                 <option value="Any Room" label="Any Room"></option>
                 <option value="Computer Room" label="Computer Room"></option>
                 <option value="Drama Studio" label="Drama Studio"></option>
@@ -236,6 +231,7 @@
                 >
                   <input
                     type="checkbox"
+                    name="status"
                     id="toggle"
                     class="
                       toggle-checkbox
@@ -249,10 +245,6 @@
                       appearance-none
                       cursor-pointer
                     "
-                    name="status"
-                    @if ($room->status)
-                        checked
-                    @endif
                   />
                   <label
                     for="toggle"
@@ -273,54 +265,12 @@
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
             <div class="grid grid-cols-1">
-              <label
-                class="
-                  uppercase
-                  md:text-sm
-                  text-xs text-gray-500 text-light
-                  font-semibold
-                "
-                >User Remark</label
-              >
-              <textarea
-                name=""
-                id=""
-                cols="10"
-                rows="6"
-                placeholder="User Remark"
-                class="border p-2 mt-3 w-full rounded-lg border-red-500"
-              ></textarea>
-            </div>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
-            <div class="grid grid-cols-1">
-              <a href="/room/delete/{{$room->id}}">
-                <button
-                  id="form2btn"
-                  class="
-                    text-white
-                    rounded-lg
-                    bg-red-500
-                    shadow-lg
-                    block
-                    md:inline-block
-                    w-24
-                    h-10
-                    mt-2
-                  "
-                  type="button"
-                  onclick="deleteRoom()"
-                >
-                  🖫 Delete
-                </button>
-              </a>
-            </div>
-            <div class="grid grid-cols-1">
               <button
+                type="submit"
                 class="
                   text-white
                   rounded-lg
-                  bg-green-500
+                  bg-red-500
                   shadow-lg
                   block
                   md:inline-block
@@ -328,15 +278,20 @@
                   h-10
                   mt-2
                 "
-                type="submit"
               >
-                🖫 Update
+                🖫 Create
               </button>
             </div>
           </div>
         </form>
         </div>
       </div>
-
-      
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+      <script src="{{asset('js/Listapi.js')}}"></script>
+      <script>
+        $(document).ready(()=>{
+          setBuldingId_List()
+          ListenBuildingChange()
+        })
+      </script>
   @endsection

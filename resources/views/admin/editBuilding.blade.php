@@ -1,4 +1,4 @@
-@extends('..layout')
+@extends('layout')
   @section('content')
   @if(Session::has('message'))
     <script>

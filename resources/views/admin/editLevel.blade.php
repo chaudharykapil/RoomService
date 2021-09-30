@@ -1,10 +1,10 @@
-@extends('..layout')
-  @section('content')  
+@extends('layout')
+  @section('content')
   @if(Session::has('message'))
-    <script>
-      alert('{{Session::get("message")}}')
-    </script>
-  @endif
+      <script>
+        alert('{{Session::get("message")}}')
+      </script>
+    @endif
       <!-- component -->
       <div class="flex items-center justify-center">
         <div
@@ -22,11 +22,11 @@
           <div class="flex justify-center">
             <div class="flex">
               <h1 class="text-gray-600 font-semibold md:text-2xl text-xl">
-                New Building Level
+                Edit Level
               </h1>
             </div>
           </div>
-          <form action="" method="post">
+          <form action="/level/edit/{{$level->id}}" method="post">
             @csrf
           <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
             <div class="grid grid-cols-1">
@@ -37,10 +37,9 @@
                   text-xs text-gray-500 text-light
                   font-semibold
                 "
-                >Building
-              </label>
-              <select
-                id="building_list"
+                >Building ID</label
+              >
+              <input
                 class="
                   py-2
                   px-3
@@ -53,10 +52,10 @@
                   focus:border-transparent
                 "
                 name="build_id"
+                value="{{$level->build_id}}"
                 type="text"
-                placeholder="Block 11"
-              >
-              </select>
+                placeholder="Block_11"
+              />
             </div>
             <div class="grid grid-cols-1">
               <label
@@ -66,7 +65,7 @@
                   text-xs text-gray-500 text-light
                   font-semibold
                 "
-                >Level</label
+                >Level No.</label
               >
               <input
                 class="
@@ -81,6 +80,7 @@
                   focus:border-transparent
                 "
                 name="level_no"
+                value="{{$level->level_no}}"
                 type="number"
                 placeholder="1"
               />
@@ -111,9 +111,31 @@
                   focus:border-transparent
                 "
                 name="level_name"
+                value="{{$level->level_name}}"
                 type="text"
-                placeholder="Level Name"
+                placeholder="1"
               />
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
+            <div class="grid grid-cols-1">
+              <label
+                class="
+                  uppercase
+                  md:text-sm
+                  text-xs text-gray-500 text-light
+                  font-semibold
+                "
+                >User Remark</label
+              >
+              <textarea
+                name=""
+                id=""
+                cols="10"
+                rows="6"
+                placeholder="User Remark"
+                class="border p-2 mt-3 w-full rounded-lg border-red-500"
+              ></textarea>
             </div>
             <div class="grid grid-cols-1">
               <label
@@ -125,7 +147,7 @@
                 "
                 >Status</label
               >
-              <div>
+              <div class="md:-mt-20">
                 <div
                   class="
                     relative
@@ -155,6 +177,9 @@
                       appearance-none
                       cursor-pointer
                     "
+                    @if ($level->status)
+                        checked
+                    @endif
                   />
                   <label
                     for="toggle"
@@ -172,13 +197,34 @@
                 <label for="toggle" class="text-lg text-gray-700">Active</label>
               </div>
             </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
+            <div class="grid grid-cols-1">
+              <a href="/level/delete/{{$level->id}}">
+                <button
+                  type="button"
+                  class="
+                    text-white
+                    rounded-lg
+                    bg-red-500
+                    shadow-lg
+                    block
+                    md:inline-block
+                    w-24
+                    h-10
+                    mt-2
+                  "
+                >
+                  🖫 Delete
+                </button>
+                </a>
+            </div>
             <div class="grid grid-cols-1">
               <button
-              type="submit"
                 class="
                   text-white
                   rounded-lg
-                  bg-red-500
+                  bg-green-500
                   shadow-lg
                   block
                   md:inline-block
@@ -186,19 +232,15 @@
                   h-10
                   mt-2
                 "
+                type="submit"
               >
-                🖫 Create
+                🖫 Update
               </button>
             </div>
           </div>
         </form>
         </div>
       </div>
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-      <script src="{{asset('js/Listapi.js')}}"></script>
-      <script>
-        $(document).ready(()=>{
-          setBuldingId_List()
-        })
-      </script>
+  
+      
   @endsection

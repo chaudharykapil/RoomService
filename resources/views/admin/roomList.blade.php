@@ -1,5 +1,4 @@
-@extends('..layout')
-  @section('content')
+@yield('content')
     @if(Session::has('message'))
       <script>
         alert('{{Session::get("message")}}')

@@ -14,7 +14,7 @@ class LevelController extends Controller
             session()->flash("message","Please Login First");
             return redirect('/');
         }
-        return view("pages/newBuildingLevel");
+        return view("admin/newBuildingLevel");
     }
 //----------------------------------------------------------------------------------------------------
     public function createLevel(Request $req)
@@ -48,7 +48,7 @@ class LevelController extends Controller
         if(!$level){
             abort(404);
         }
-        return view("pages/editLevel",compact("level"));
+        return view("admin/editLevel",compact("level"));
     }
 //----------------------------------------------------------------------------------------------------
     public function updateLevel($id,Request $req)
@@ -97,7 +97,7 @@ class LevelController extends Controller
             return redirect('/');
         }
         $all_levels = Level::all();
-        return view("pages/levelList",compact("all_levels"));
+        return view("admin/levelList",compact("all_levels"));
     }
 //----------------------------------------------------------------------------------------------------
     public function GetLevelId($id)
