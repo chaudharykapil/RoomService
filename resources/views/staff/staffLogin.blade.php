@@ -3,12 +3,13 @@
     <h1 class="self-center text-3xl text-blue-500">Staff Login</h1>
     <div class="h-100 px-10 flex justify-center">
       <div class="py-1 px-8 mt-5 bg-white rounded shadow-xl">
-        <form action="">
+        <form action="/staff/login" method="POST">
+          @csrf
           <div class="mb-6">
             <label for="name" class="block text-gray-800 font-bold">UserName/ID</label>
             <input
               type="text"
-              name="name"
+              name="staff_id"
               id="name"
               placeholder="username"
               class="

@@ -27,11 +27,15 @@
             </svg>
           </button>
         </div>
+        @if (Session::has("staff"))
         <div>
+          <a href="/staff/logout">
           <button class="rounded-lg bg-white text-blue-500 p-2 text-lg">
             Sign Out
           </button>
-        </div>
+          </a>
+        </div>    
+        @endif
       </nav>
       <div class="navbar-menu relative z-50 hidden">
         <div class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
