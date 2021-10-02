@@ -18,6 +18,7 @@ class Rooms extends Migration
             $table->string('build_id',10);
             $table->integer("level_no");
             $table->integer("room_no");
+            $table->integer("max_size");
             $table->string('room_name',10);
             $table->string('room_type',30);
             $table->boolean("status");
