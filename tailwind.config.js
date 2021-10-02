@@ -6,7 +6,11 @@ module.exports = {
       spacing:{
         "100":"29rem",
         "98":"25rem"
-      }
+      },
+      backgroundImage: {
+        'main-bg': "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)) , url('../img/background.jpg')",
+        
+       }
     },
   },
   variants: {
