@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../build/styles.css" />
+    <link rel="stylesheet" href="{{asset('css/app.css')}}" />
+    <script src="{{asset('js/app.js')}}"></script>
     <title>Home</title>
   </head>
   <body>
@@ -26,69 +27,7 @@
             </svg>
           </button>
         </div>
-        <ul
-          class="
-            hidden
-            absolute
-            top-1/2
-            left-1/2
-            transform
-            -translate-y-1/2 -translate-x-1/2
-            lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6
-          "
-        >
-          <li>
-            <a class="text-sm text-white hover:text-gray-100" href="index.html"
-              >Home</a
-            >
-          </li>
-          <li>
-            <a
-              class="text-sm text-white hover:text-gray-100"
-              href="./pages/viewRoom.html"
-              >View Rooms</a
-            >
-          </li>
-          <li>
-            <a
-              class="text-sm text-white hover:text-gray-100"
-              href="./pages/newRoom.html"
-              >Add Rooms</a
-            >
-          </li>
-          <li>
-            <a
-              class="text-sm text-white hover:text-gray-100"
-              href="./pages/viewBuilding.html"
-              >View Building</a
-            >
-          </li>
-          <li>
-            <a
-              class="text-sm text-white hover:text-gray-100"
-              href="./pages/newBuilding.html"
-              >Add Building</a
-            >
-          </li>
-          <li>
-            <a
-              class="text-sm text-white hover:text-gray-100"
-              href="./pages/viewLevel.html"
-              >View Level</a
-            >
-          </li>
-          <li>
-            <a
-              class="text-sm text-white hover:text-gray-100"
-              href="./pages/newBuildingLevel.html"
-              >Add Building Level</a
-            >
-          </li>
-        </ul>
         <div>
-          <button class="rounded-lg bg-white text-blue-500 p-2 text-lg">
-            Sign In
-          </button>
           <button class="rounded-lg bg-white text-blue-500 p-2 text-lg">
             Sign Out
           </button>
@@ -137,113 +76,6 @@
             </button>
           </div>
           <div>
-            <ul>
-              <li class="mb-1">
-                <a
-                  class="
-                    block
-                    p-4
-                    text-sm
-                    font-semibold
-                    text-white
-                    hover:bg-blue-50 hover:text-white
-                    rounded
-                  "
-                  href="index.html"
-                  >Home</a
-                >
-              </li>
-              <li class="mb-1">
-                <a
-                  class="
-                    block
-                    p-4
-                    text-sm
-                    font-semibold
-                    text-white
-                    hover:bg-blue-50 hover:text-white
-                    rounded
-                  "
-                  href="./pages/viewRoom.html"
-                  >View Rooms</a
-                >
-              </li>
-              <li class="mb-1">
-                <a
-                  class="
-                    block
-                    p-4
-                    text-sm
-                    font-semibold
-                    text-white
-                    hover:bg-blue-50 hover:text-white
-                    rounded
-                  "
-                  href="./pages/newRoom.html"
-                  >Add Rooms</a
-                >
-              </li>
-              <li class="mb-1">
-                <a
-                  class="
-                    block
-                    p-4
-                    text-sm
-                    font-semibold
-                    text-white
-                    hover:bg-blue-50 hover:text-white
-                    rounded
-                  "
-                  href="./pages/viewBuilding.html"
-                  >View Building</a
-                >
-              </li>
-              <li class="mb-1">
-                <a
-                  class="
-                    block
-                    p-4
-                    text-sm
-                    font-semibold
-                    text-white
-                    hover:bg-blue-50 hover:text-white
-                    rounded
-                  "
-                  href="./pages/newBuilding.html"
-                  >Add Building</a
-                >
-              </li>
-              <li class="mb-1">
-                <a
-                  class="
-                    block
-                    p-4
-                    text-sm
-                    font-semibold
-                    text-white
-                    hover:bg-blue-50 hover:text-white
-                    rounded
-                  "
-                  href="./pages/viewLevel.html"
-                  >View Level</a
-                >
-              </li>
-              <li class="mb-1">
-                <a
-                  class="
-                    block
-                    p-4
-                    text-sm
-                    font-semibold
-                    text-white
-                    hover:bg-blue-50 hover:text-white
-                    rounded
-                  "
-                  href="./pages/newBuildingLevel.html"
-                  >Add Building Level</a
-                >
-              </li>
-            </ul>
           </div>
         </nav>
       </div>

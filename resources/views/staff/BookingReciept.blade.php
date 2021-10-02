@@ -13,10 +13,10 @@
           <p class="font-bold text-lg py-2">Thank You</p>
       </div>
       <div class="m-4">
-          <button class="bg-blue-500 px-8 py-2 rounded text-white font-bold">Book Another</button>
+          <a href="/staff/roombooking"><button class="bg-blue-500 px-8 py-2 rounded text-white font-bold">Book Another</button></a>
       </div>
       <div>
-          <a href="#" class="text-blue-500 underline text-lg">My Bookings</a>
+          <a href="/staff/allbooking" class="text-blue-500 underline text-lg">My Bookings</a>
       </div>
     </div>
   @endsection
