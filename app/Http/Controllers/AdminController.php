@@ -15,7 +15,6 @@ class AdminController extends Controller
     }
     public function Login(Request $req)
     {
-        
         $userid = $req->userid;
         $pass = $req->password;
         $adm = Admin::where("userid","=",$userid)->get();
@@ -25,11 +24,13 @@ class AdminController extends Controller
                 return redirect('/admin/login');
             }
             else {
-                return "login failed";
+                session()->flash("message","Login Failed");
+                return redirect('/admin/login');
             }
         }
         else {
-            return "login failed";
+            session()->flash("message","Login Failed");
+            return redirect('/admin/login');
         }
     }
     public function LogOut()
@@ -38,7 +39,8 @@ class AdminController extends Controller
             session()->forget("admin");
             return redirect('/admin/login');
         }
-        return "already logout";
+        session()->flash("message","Already Logout");
+        return redirect('/admin/login');
     }
     
 }
