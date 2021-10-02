@@ -6,10 +6,14 @@ use App\Http\Controllers\RoomController;
 use App\Http\Controllers\BuildingController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\ChatController;
-
+use App\Http\Controllers\StaffLoginController;
+use App\Http\Controllers\RoomBookingController;
+Route::get('/', function () {
+    return view("mainpage");
+});
 //<-----------------------------------------Routes for Admin ---------------------------->
 
-Route::get('/',[AdminController::class,'showLoginPage']);
+Route::get('/admin/login',[AdminController::class,'showLoginPage']);
 Route::post('/admin/login',[AdminController::class,'Login']);
 Route::get('/admin/logout',[AdminController::class,'LogOut']);
 
@@ -45,6 +49,25 @@ Route::get('/user', function () {
     $send_to = 1;
     return view("admin/userChat",compact("send_to"));
 });
+
+//<----------------------------------------Routes for Staff Login ----------------------------->
+Route::get('/staff/login',[StaffLoginController::class,"ShowLoginPage"]);
+
+//<-----------------------------------------Routes for room Booking---------------------------->
+Route::get('/staff/roombooking',[RoomBookingController::class,"ShowRoomBooking"]);
+
+//<-----------------------------------------Routes for RoomSelection--------------------------->
+Route::get('/staff/roomselection',[RoomBookingController::class,"ShowRoomSelection"]);
+
+//<-----------------------------------------Routes for Detail Entry---------------------------->
+Route::get('/staff/detailentry',[RoomBookingController::class,"ShowDetailEntry"]);
+
+//<-----------------------------------------Routes for Booking Reciept------------------------->
+Route::get('/staff/bookingreciept',[RoomBookingController::class,"ShowBookingReciept"]);
+
+//<-----------------------------------------Routes for room Booking---------------------------->
+Route::get('/staff/allbooking',[RoomBookingController::class,"ShowStaffBooking"]);
+
 //<----------------------------------------Routes for Api ------------------------------------>
 Route::get('/api/getBuildings',[BuildingController::class,"GetBuildingId"]);
 Route::get('/api/getLevels/{id}',[LevelController::class,"GetLevelId"]);
