@@ -52,7 +52,8 @@ Route::get('/user', function () {
 
 //<----------------------------------------Routes for Staff Login ----------------------------->
 Route::get('/staff/login',[StaffLoginController::class,"ShowLoginPage"]);
-
+Route::post('/staff/login',[StaffLoginController::class,"StaffLogin"]);
+Route::get('/staff/logout',[StaffLoginController::class,"StaffLogout"]);
 //<-----------------------------------------Routes for room Booking---------------------------->
 Route::get('/staff/roombooking',[RoomBookingController::class,"ShowRoomBooking"]);
 
