@@ -11,7 +11,7 @@ class RoomController extends Controller
     {
         if(!session('admin')){
             session()->flash("message","Please Login First");
-            return redirect('/');
+            return redirect('/admin/login');
         }
         $sender_id = 1;
         return view("admin/newRoom",compact("sender_id"));
@@ -21,13 +21,14 @@ class RoomController extends Controller
     {
         if(!session('admin')){
             session()->flash("message","Please Login First");
-            return redirect('/');
+            return redirect('/admin/login');
         }
         $data = $req->input();
         $newRoom = new Room;
         $newRoom->build_id = $data['build_id'];
         $newRoom->level_no = $data['level_no'];
         $newRoom->room_no = $data['room_no'];
+        $newRoom->max_size = $data['max_size'];
         $newRoom->room_name = $data['room_name'];
         $newRoom->room_type = $data['room_type'];
         try {
@@ -44,7 +45,7 @@ class RoomController extends Controller
     {
         if(!session('admin')){
             session()->flash("message","Please Login First");
-            return redirect('/');
+            return redirect('/admin/login');
         }
         $room = Room::find($id);
         if(!$room){
@@ -57,7 +58,7 @@ class RoomController extends Controller
     {
         if(!session('admin')){
             session()->flash("message","Please Login First");
-            return redirect('/');
+            return redirect('/admin/login');
         }
         $room = Room::find($id);
         if(!$room){
@@ -82,7 +83,7 @@ class RoomController extends Controller
     {
         if(!session('admin')){
             session()->flash("message","Please Login First");
-            return redirect('/');
+            return redirect('/admin/login');
         }
         $room = Room::find($id);
         if(!$room){
@@ -96,7 +97,7 @@ class RoomController extends Controller
     {
         if(!session('admin')){
             session()->flash("message","Please Login First");
-            return redirect('/');
+            return redirect('/admin/login');
         }
         $all_rooms = Room::all();
         $send_to = 2;

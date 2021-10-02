@@ -22,7 +22,7 @@ class AdminController extends Controller
         if(count($adm)){
             if ($adm[0]->password == $pass) {
                 session(["admin"=>$adm[0]]);
-                return redirect('/');
+                return redirect('/admin/login');
             }
             else {
                 return "login failed";
@@ -36,7 +36,7 @@ class AdminController extends Controller
     {
         if (session("admin")){
             session()->forget("admin");
-            return redirect('/');;
+            return redirect('/admin/login');
         }
         return "already logout";
     }
