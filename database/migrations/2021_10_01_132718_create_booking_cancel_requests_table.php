@@ -15,8 +15,7 @@ class CreateBookingCancelRequestsTable extends Migration
     {
         Schema::create('booking_cancel_requests', function (Blueprint $table) {
             $table->id();
-            
-            $table->timestamps();
+            $table->integer("booking_id");
         });
     }
 

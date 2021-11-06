@@ -15,8 +15,8 @@ class Buildings extends Migration
     {
         Schema::create('buildings', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string("b_id",10);
-            $table->string("b_name",15);
+            $table->string("b_id",50);
+            $table->string("b_name",50);
             $table->boolean("status");
         });
     }

@@ -20,7 +20,6 @@ class CreateBookedRoomsTable extends Migration
             $table->date("requested_date");
             $table->time("time_from");
             $table->time("time_to");
-            $table->integer("requested_size");
         });
     }
 
