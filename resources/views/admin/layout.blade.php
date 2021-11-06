@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="{{asset('css/app.css')}}" />
     <script src="{{asset('js/app.js')}}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    
     <title>Home</title>
   </head>
   <body>
@@ -83,6 +82,20 @@
               class="text-sm text-white hover:text-gray-100"
               href="/level/new"
               >Add Building Level</a
+            >
+          </li>
+          <li>
+            <a
+              class="text-sm text-white hover:text-gray-100"
+              href="/room/requestedroom"
+              >Requested Room</a
+            >
+          </li>
+          <li>
+            <a
+              class="text-sm text-white hover:text-gray-100"
+              href="/room/cancelrequest"
+              >Room Cancellation<br/>Request</a
             >
           </li>
         </ul>

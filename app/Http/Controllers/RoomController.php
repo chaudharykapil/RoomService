@@ -148,7 +148,9 @@ class RoomController extends Controller
             return null;
         }
         $reqroom = RequestedRoom::find($req->input("id"));
+        $detail = BookingDetail::find($reqroom["booking_detail_id"]);
         $reqroom->delete();
+        $detail->delete();
         return 0;
     }
     public function ShowCancelRequest()
