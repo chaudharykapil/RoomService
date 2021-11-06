@@ -24,42 +24,52 @@
             <th class="w-64 bg-blue-500 text-lg text-center text-white font-bold">
             </th>
           </tr>
+          @foreach ($request_rooms as $room)
           <tr>
             <td class="w-64 pt-2 text-lg text-center">
-              14:00 - 16:00
+              {{$room["time_from"]}} - {{$room["time_to"]}}
             </td>
             <td class="w-64 pt-2 text-lg text-center">
-              B11-1-17
+              {{$room["location"]}}
             </td>
             <td class="w-64 pt-2 text-lg text-center">
-              Block 11 level 1 room 17 -Lab
+              {{$room["description"]}}
             </td>
             <td class="w-64 pt-2 text-lg text-center">
               Unconfirmed
             </td>
             <td class="w-64 pt-2 text-lg text-center">
-              <button class="bg-blue-500 w-52 py-1 rounded text-white">Request Cancelation</button>
+              <button class="bg-blue-500 w-52 py-1 rounded text-white" onclick="requestCancel({{$room['room_id']}})">Request Cancelation</button>
             </td>
           </tr>
+          @endforeach
+          @foreach ($bookedrooms as $room)
           <tr>
             <td class="w-64 pt-2 text-lg text-center">
-              14:00 - 16:00
+              {{$room["time_from"]}} - {{$room["time_to"]}}
             </td>
             <td class="w-64 pt-2 text-lg text-center">
-              B11-1-17
+              {{$room["location"]}}
             </td>
             <td class="w-64 pt-2 text-lg text-center">
-              Block 11 level 1 room 17 -Lab
+              {{$room["description"]}}
             </td>
             <td class="w-64 pt-2 text-lg text-center">
               Confirmed
             </td>
             <td class="w-64 pt-2 text-lg text-center">
-              <button class="bg-blue-500 w-52 py-1 rounded text-white">Request Cancelation</button>
+              <button class="bg-blue-500 w-52 py-1 rounded text-white" onclick="requestCancel({{$room['room_id']}})">Request Cancelation</button>
             </td>
           </tr>
-          
+          @endforeach
         </table>
       </div>
     </div>
+    <script>
+      function requestCancel(id) {
+        console.log(id)
+        axios.post("/staff/cancel",{"id":id}).then(e=>location.reload())
+        
+      }
+    </script>
   @endsection

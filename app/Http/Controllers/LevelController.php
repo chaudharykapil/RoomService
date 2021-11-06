@@ -12,7 +12,7 @@ class LevelController extends Controller
     {
         if(!session('admin')){
             session()->flash("message","Please Login First");
-            return redirect('/');
+            return redirect('/admin/login');
         }
         return view("admin/newBuildingLevel");
     }
@@ -21,7 +21,7 @@ class LevelController extends Controller
     {
         if(!session('admin')){
             session()->flash("message","Please Login First");
-            return redirect('/');
+            return redirect('/admin/login');
         }
         $data = $req->input();
         $newLevel = new Level;
@@ -42,7 +42,7 @@ class LevelController extends Controller
     {
         if(!session('admin')){
             session()->flash("message","Please Login First");
-            return redirect('/');
+            return redirect('/admin/login');
         }
         $level = Level::find($id);
         if(!$level){
@@ -55,7 +55,7 @@ class LevelController extends Controller
     {
         if(!session('admin')){
             session()->flash("message","Please Login First");
-            return redirect('/');
+            return redirect('/admin/login');
         }
         $level = Level::find($id);
         if(!$level){
@@ -79,7 +79,7 @@ class LevelController extends Controller
     {
         if(!session('admin')){
             session()->flash("message","Please Login First");
-            return redirect('/');
+            return redirect('/admin/login');
         }
         $level = Level::find($id);
         if(!$level){
@@ -94,7 +94,7 @@ class LevelController extends Controller
     {
         if(!session('admin')){
             session()->flash("message","Please Login First");
-            return redirect('/');
+            return redirect('/admin/login');
         }
         $all_levels = Level::all();
         return view("admin/levelList",compact("all_levels"));
@@ -104,7 +104,7 @@ class LevelController extends Controller
     {
         if(!session('admin')){
             session()->flash("message","Please Login First");
-            return redirect('/');
+            return redirect('/admin/login');
         }
         $all_levels = Level::Where("build_id","=",$id)->get();
         $level_list = [];

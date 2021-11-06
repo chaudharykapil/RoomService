@@ -21,7 +21,7 @@ class BuildingController extends Controller
     {
         if(!session('admin')){
             session()->flash("message","Please Login First");
-            return redirect('/');
+            return redirect('/admin/login');
         }
         $data = $req->input();
         $newbuilding = new Building;
@@ -41,7 +41,7 @@ class BuildingController extends Controller
     {
         if(!session('admin')){
             session()->flash("message","Please Login First");
-            return redirect('/');
+            return redirect('/admin/login');
         }
         $building = Building::find($id);
         if(!$building){
@@ -54,7 +54,7 @@ class BuildingController extends Controller
     {
         if(!session('admin')){
             session()->flash("message","Please Login First");
-            return redirect('/');
+            return redirect('/admin/login');
         }
         $building = Building::find($id);
         if(!$building){
@@ -77,7 +77,7 @@ class BuildingController extends Controller
     {
         if(!session('admin')){
             session()->flash("message","Please Login First");
-            return redirect('/');
+            return redirect('/admin/login');
         }
         $building = Building::find($id);
         if(!$building){
@@ -92,18 +92,15 @@ class BuildingController extends Controller
     {
         if(!session('admin')){
             session()->flash("message","Please Login First");
-            return redirect('/');
+            return redirect('/admin/login');
         }
         $all_buildings = Building::all();
-        return view("pages/buildingList",compact("all_buildings"));
+        return view("admin/buildingList",compact("all_buildings"));
     }
 //---------------------------------------------------------------------------------------------------
     public function GetBuildingId()
     {
-        if(!session('admin')){
-            session()->flash("message","Please Login First");
-            return redirect('/');
-        }
+        
         $id_list = [];
         
         $all_buildings = Building::all();
