@@ -76,3 +76,4 @@ Route::post("/staff/cancel",[RoomBookingController::class,"CancelRoom"]);
 Route::get('/api/getBuildings',[BuildingController::class,"GetBuildingId"]);
 Route::get('/api/getLevels/{id}',[LevelController::class,"GetLevelId"]);
 Route::get("/api/getRoomsizes",[RoomBookingController::class,"GetRoomSizes"]);
+Route::post('/api/getmessages',[ChatController::class,"getMessages"]);

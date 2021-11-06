@@ -21,4 +21,11 @@ class ChatController extends Controller
         broadcast(new MessageSend($msg))->toOthers();
         return "done";
     }
+    public function getMessages(Request $req)
+    {
+        $data =  $req->input();
+        $messages = Message::Where("sender_id","=",$data["sender_id"])->Where("reciever_id","=",$data["reciever_id"])->orWhere("sender_id","=",$data["reciever_id"])->Where("reciever_id","=",$data["sender_id"])->orderBy('created_at')->get();
+        return $messages;
+
+    }
 }

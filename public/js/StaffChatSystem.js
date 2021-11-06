@@ -1,16 +1,15 @@
-
 $(document).ready(()=>{
     let chatbox = document.getElementById("chatpanel")
     let activeUsers = []
     Echo.channel('chat')
     .listen('MessageSend', (e) => {
-        console.log(e);
+        //console.log(e);
         if(e.message){
-            chatbox.removeAttribute("hidden")
+            //chatbox.removeAttribute("hidden")
             console.log(e.message.sender_id)
             if (activeUsers.indexOf(e.message.sender_id) == -1){
                 activeUsers.push(e.message.sender_id)
-                axios.post("/api/getmessages",{"sender_id":e.message.sender_id,"reciever_id":e.message.reciever_id}).then(res=>console.log(res))
+                
             }
             console.log(activeUsers)
             let msgbox = createRecieverChatmsg(e.message.message)

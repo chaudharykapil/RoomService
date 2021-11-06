@@ -93,7 +93,7 @@
     
     <div id="chatpanel" hidden class="absolute bottom-0 right-0 h-9/10 bg-red-600 w-1/4 mb-0 mr-5 rounded-lg">
       <div class="flex flex-row ml-5">
-      <h3 class="text-left text-lg font-bold text-white w-80">Chat with Admin</h3>
+      <h3 class="text-left text-lg font-bold text-white w-80">Chat with Staff</h3>
       <span id="vis_btn_span"><button class = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 m-1 px-4 rounded" id="visibilitybtn" onclick="showchatbox()">^</button></span>
       </div>
       <div class="bg-white m-5 p-2 h-100 w-1/1" id="chatbox" hidden>
