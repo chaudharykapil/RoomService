@@ -59,6 +59,20 @@
           <li>
             <a
               class="text-sm text-white hover:text-gray-100"
+              href="/level/list"
+              >View Level</a
+            >
+          </li>
+          <li>
+            <a
+              class="text-sm text-white hover:text-gray-100"
+              href="/level/new"
+              >Add Level</a
+            >
+          </li>
+          <li>
+            <a
+              class="text-sm text-white hover:text-gray-100"
               href="/building/list"
               >View Building</a
             >
@@ -70,20 +84,7 @@
               >Add Building</a
             >
           </li>
-          <li>
-            <a
-              class="text-sm text-white hover:text-gray-100"
-              href="/level/list"
-              >View Level</a
-            >
-          </li>
-          <li>
-            <a
-              class="text-sm text-white hover:text-gray-100"
-              href="/level/new"
-              >Add Building Level</a
-            >
-          </li>
+          
           <li>
             <a
               class="text-sm text-white hover:text-gray-100"
@@ -197,6 +198,36 @@
                     hover:bg-blue-50 hover:text-white
                     rounded
                   "
+                  href="/level/list"
+                  >View Level</a
+                >
+              </li>
+              <li class="mb-1">
+                <a
+                  class="
+                    block
+                    p-4
+                    text-sm
+                    font-semibold
+                    text-white
+                    hover:bg-blue-50 hover:text-white
+                    rounded
+                  "
+                  href="/level/new"
+                  >Add Level</a
+                >
+              </li>
+              <li class="mb-1">
+                <a
+                  class="
+                    block
+                    p-4
+                    text-sm
+                    font-semibold
+                    text-white
+                    hover:bg-blue-50 hover:text-white
+                    rounded
+                  "
                   href="/building/list"
                   >View Building</a
                 >
@@ -227,8 +258,8 @@
                     hover:bg-blue-50 hover:text-white
                     rounded
                   "
-                  href="/level/list"
-                  >View Level</a
+                  href="/building/new"
+                  >Requested Room</a
                 >
               </li>
               <li class="mb-1">
@@ -242,9 +273,9 @@
                     hover:bg-blue-50 hover:text-white
                     rounded
                   "
-                  href="/level/new"
-                  >Add Building Level</a
-                >
+                  href="/room/cancelrequest">
+                  Room Cancellation<br/>Request
+                </a>
               </li>
             </ul>
             @endif

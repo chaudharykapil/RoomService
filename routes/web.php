@@ -50,10 +50,10 @@ Route::get('/level/delete/{id}',[LevelController::class,'deleteLevel']);
 
 //<----------------------------------------Routes for Chat ---------------------------------->
 Route::post('/sendmessage',[ChatController::class,'SendMessage']);
-Route::get('/user', function () {
-    $send_to = 1;
-    return view("admin/userChat",compact("send_to"));
-});
+//Route::get('/user', function () {
+//    $send_to = 1;
+//    return view("admin/userChat",compact("send_to"));
+//});
 
 //<----------------------------------------Routes for Staff Login ----------------------------->
 Route::get('/staff/login',[StaffLoginController::class,"ShowLoginPage"]);

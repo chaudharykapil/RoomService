@@ -11,7 +11,7 @@
           </div>
           <div class="flex flex-row">
             <div class="mr-20">
-              <img src="../img/icon.png" height="200" width="200" alt="">
+              <img src="{{asset('images/location.png')}}" height="200" width="200" alt="">
             </div>
             <div class="flex flex-col">
               <div class="flex flex-row justify-end mb-10">
@@ -84,7 +84,7 @@
           </div>
           <div class="flex flex-row">
             <div class="mr-20">
-              <img src="../img/icon.png" height="200" width="200" alt="">
+              <img src="{{asset('images/date.png')}}" height="200" width="200" alt="">
             </div>
             <div class="flex flex-col">
               <div class="flex flex-row justify-end mb-10">
@@ -103,7 +103,7 @@
           </div>
           <div class="flex flex-row">
             <div class="mr-20">
-              <img src="../img/icon.png" height="200" width="200" alt="">
+              <img src="{{asset('images/time.jpg')}}" height="200" width="200" alt="">
             </div>
             <div class="flex flex-col">
               <div class="flex flex-row justify-end mb-10">

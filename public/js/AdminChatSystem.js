@@ -15,20 +15,23 @@ $(document).ready(()=>{
                 axios.post("/api/getmessages",{"sender_id":e.message.sender_id,"reciever_id":e.message.reciever_id}).then(res=>{
                     console.log(res)
                     res.data.forEach(msg => {
-                        if (msg.reciever_id == 1 && msg.sender_id == 2){
+                        if (msg.reciever_id == 2 && msg.sender_id == 1){
                             let msgbox = createSenderChatmsg(msg.message)
                             AddMessage(msgbox)
                         }
-                        if(msg.reciever_id == 2 && msg.sender_id == 1){
+                        if(msg.reciever_id == 1 && msg.sender_id == 2){
                             let msgbox = createRecieverChatmsg(msg.message)
                             AddMessage(msgbox)
                         }
                     });
                 })
             }
+            else{
+                let msgbox = createRecieverChatmsg(e.message.message)
+                AddMessage(msgbox)
+            }
             console.log(activeUsers)
-            let msgbox = createRecieverChatmsg(e.message.message)
-            AddMessage(msgbox)
+            
         }
     });
 })

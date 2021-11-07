@@ -37,10 +37,10 @@ class AdminController extends Controller
     {
         if (session("admin")){
             session()->forget("admin");
-            return redirect('/admin/login');
+            return redirect('/');
         }
         session()->flash("message","Already Logout");
-        return redirect('/admin/login');
+        return redirect('/');
     }
     
 }

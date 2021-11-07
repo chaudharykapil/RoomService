@@ -24,9 +24,7 @@
             <a href="/staff/login"><button class="text-white m-4 text-xl underline border-2 border-white hover:border-black hover:bg-white-100 hover:text-black px-2 py-2 rounded-lg">
                 Continue as Staff
             </button></a>
-            <a href=""><button class="text-white m-4 text-xl underline border-2 border-white hover:border-black hover:bg-white-100 hover:text-black px-2 py-2 rounded-lg">
-                Continue as Student
-            </button></a>
+            
         </div>
     </div>
 </body>
