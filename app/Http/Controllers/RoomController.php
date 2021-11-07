@@ -16,8 +16,7 @@ class RoomController extends Controller
             session()->flash("message","Please Login First");
             return redirect('/admin/login');
         }
-        $sender_id = 1;
-        return view("admin/newRoom",compact("sender_id"));
+        return view("admin/newRoom");
     }
 
     public function createRoom(Request $req)
