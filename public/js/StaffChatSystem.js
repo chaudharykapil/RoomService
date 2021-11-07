@@ -1,5 +1,18 @@
 $(document).ready(()=>{
-    let chatbox = document.getElementById("chatpanel")
+    
+    axios.post("/api/getmessages",{"sender_id":2,"reciever_id":1}).then(res=>{
+        console.log(res)
+        res.data.forEach(msg => {
+            if (msg.reciever_id == 1 && msg.sender_id == 2){
+                let msgbox = createSenderChatmsg(msg.message)
+                AddMessage(msgbox)
+            }
+            if(msg.reciever_id == 2 && msg.sender_id == 1){
+                let msgbox = createRecieverChatmsg(msg.message)
+                AddMessage(msgbox)
+            }
+        });
+    })
     let activeUsers = []
     Echo.channel('chat')
     .listen('MessageSend', (e) => {
@@ -9,11 +22,12 @@ $(document).ready(()=>{
             console.log(e.message.sender_id)
             if (activeUsers.indexOf(e.message.sender_id) == -1){
                 activeUsers.push(e.message.sender_id)
-                
             }
             console.log(activeUsers)
             let msgbox = createRecieverChatmsg(e.message.message)
             AddMessage(msgbox)
+
+            
         }
     });
 })
@@ -43,7 +57,7 @@ function SendMessage(send_to,sender_id) {
     let msg = $("#msgbox").val()
     //console.log(msg)
     axios.post("/sendmessage",data = {message:msg,sender_id:sender_id,send_to:send_to}).then((e)=>{
-        //console.log(e)
+        console.log(e)
     })
     let msgbox = createSenderChatmsg(msg)
     AddMessage(msgbox)
