@@ -15,6 +15,7 @@ class CreateBookingDetailsTable extends Migration
     {
         Schema::create('booking_details', function (Blueprint $table) {
             $table->id();
+            $table->string("userid");
             $table->string("email");
             $table->string("phone_no");
             $table->integer("booking_size");

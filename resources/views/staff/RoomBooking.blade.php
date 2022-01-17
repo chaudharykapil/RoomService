@@ -113,7 +113,9 @@
                 </span>
                 <span class="self-end mr-10">
                   <span class="mr-5">Duration</span>
-                  <input type="number" name="duration" id="" class="w-40 border-blue-500 border-2" />
+                  <select name="duration" id="duration_list" class="w-40 border-blue-500 border-2">
+                    
+                  </select>
                 </span>
               </div>
             </div>
@@ -130,6 +132,7 @@
     <script>
       $(document).ready(()=>{
         setBuldingId_List()
+        setRoomDurationList()
       })
     </script>
     

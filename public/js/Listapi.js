@@ -62,3 +62,29 @@ function setLevelId_List(build_id){
         }
     })
 }
+function setRoomDurationList() {
+    axios.get(`/api/getroomduration`).then(e=>{
+        let list = e.data
+        let duration_list = document.getElementById("duration_list")
+        if (list.length == 0) {
+            option = document.createElement("option")
+            option.setAttribute("value","")
+            option.setAttribute("disabled",true)
+            option.innerHTML = "No room added"
+            duration_list.appendChild(option)
+        }
+        else{
+            option = document.createElement("option")
+            option.setAttribute("value","")
+            option.innerHTML = "Select Duration"
+            duration_list.appendChild(option)
+            list.forEach(id => {
+                option = document.createElement("option")
+                option.setAttribute("value",id)
+                option.innerHTML = id
+                duration_list.appendChild(option)
+            });
+        }
+
+    })
+}

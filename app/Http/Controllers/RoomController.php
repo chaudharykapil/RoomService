@@ -8,6 +8,7 @@ use App\Models\RequestedRoom;
 use App\Models\BookingDetail;
 use App\Models\BookedRoom;
 use App\Models\BookingCancelRequest;
+use App\Models\Notification;
 class RoomController extends Controller
 {
     public function AddRoomPage()
@@ -33,6 +34,7 @@ class RoomController extends Controller
         $newRoom->max_size = $data['max_size'];
         $newRoom->room_name = $data['room_name'];
         $newRoom->room_type = $data['room_type'];
+        $newRoom->room_duration = $data["room_duration"];
         try {
             $newRoom->status = $data['status'] == 'on';
         } catch (\Throwable $th) {
@@ -130,6 +132,10 @@ class RoomController extends Controller
             return null;
         }
         $reqroom = RequestedRoom::find($req->input("id"));
+        $booking_detail = BookingDetail::Where("id","=",$reqroom->booking_detail_id)->get()[0];
+        $room = Room::find($reqroom->room_id);
+        $room->frequency = $room->frequency + 1;
+        $room->save(); 
         $bookroom = new BookedRoom;
         $bookroom->room_id = $reqroom->room_id;
         $bookroom->booking_detail_id = $reqroom->booking_detail_id;
@@ -137,6 +143,12 @@ class RoomController extends Controller
         $bookroom->time_from = $reqroom->time_from;
         $bookroom->time_to = $reqroom->time_to;  
         $bookroom->save();
+
+        $notification = new Notification;
+        $notification->user_id = $booking_detail->userid;
+        $notification->title = "Accept for room:- ".$room["build_id"]."-".strval($room["level_no"])."-".strval($room["room_no"])." on ".date("d-m-Y");
+        $notification->notification = "Your Request for room ".$room["build_id"]."-".strval($room["level_no"])."-".strval($room["room_no"])." has been Approved for ".strval($reqroom->requested_date);
+        $notification->save();
         $reqroom->delete();
         return $bookroom;
     }
@@ -148,8 +160,15 @@ class RoomController extends Controller
         }
         $reqroom = RequestedRoom::find($req->input("id"));
         $detail = BookingDetail::find($reqroom["booking_detail_id"]);
+        $room = Room::find($reqroom->room_id);
+        $notification = new Notification;
+        $notification->user_id = $detail->userid;
+        $notification->title = "Rejection for room:- ".$room["build_id"]."-".strval($room["level_no"])."-".strval($room["room_no"])." on ".date("d-m-Y");
+        $notification->notification = "Your Request for room ".$room["build_id"]."-".strval($room["level_no"])."-".strval($room["room_no"])." has been Rejected";
+        $notification->save();
         $reqroom->delete();
         $detail->delete();
+        
         return 0;
     }
     public function ShowCancelRequest()
@@ -180,9 +199,37 @@ class RoomController extends Controller
         $cancel_req =BookingCancelRequest::find($cancel_id);
         $booking = BookedRoom::find($cancel_req["booking_id"]);
         $detail = BookingDetail::find($booking["booking_detail_id"]);
+        $notification = new Notification;
+        $notification->user_id = $detail->userid;
+        $notification->title = "Cancellation Approved";
+        $notification->notification = "Your Cancellation Request for room has been Approved";
+        $notification->save();
         $booking->delete();
         $detail->delete();
         $cancel_req->delete();
         return 0;
+    }
+    public function ShowRoomFrequency()
+    {
+        if(!session('admin')){
+            session()->flash("message","Please Login First");
+            return redirect('/admin/login');
+        }
+        $all_rooms = [];
+        $raw_rooms = Room::all();
+        $all_rooms = $raw_rooms;
+        $flag = true;
+        while($flag){
+            $flag = false;
+            for ($i=1; $i < count($all_rooms); $i++) { 
+                if($all_rooms[$i-1]->frequency < $all_rooms[$i]->frequency){
+                    $temp = $all_rooms[$i-1];
+                    $all_rooms[$i-1] = $all_rooms[$i];
+                    $all_rooms[$i] = $temp;
+                    $flag = true;
+                }
+            }
+        }
+        return view("admin/roomFrequencyList",compact("all_rooms"));
     }
 }

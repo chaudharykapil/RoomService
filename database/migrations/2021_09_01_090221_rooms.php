@@ -21,6 +21,8 @@ class Rooms extends Migration
             $table->integer("max_size");
             $table->string('room_name',50);
             $table->string('room_type',30);
+            $table->integer('room_duration');
+            $table->integer('frequency')->default(0);
             $table->boolean("status");
         });
     }

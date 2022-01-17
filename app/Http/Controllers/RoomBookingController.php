@@ -22,10 +22,9 @@ class RoomBookingController extends Controller
     public function SelectRooms(Request $req)
     {
         $data =  $req->input();
-        $rooms = Room::Where("max_size",">=",$data["size"])->Where("room_type","=",$data["room_type"])->Where("build_id","=",$data["build_id"])->get();
+        $rooms = Room::Where("max_size",">=",$data["size"])->Where("room_type","=",$data["room_type"])->Where("build_id","=",$data["build_id"])->Where("room_duration",">=",$data["duration"])->get();
         $endtime = strtotime($data["pref_time"]) + $data["duration"]*60*60;
         $endtime = date('H:i', $endtime);
-        
         for ($i=0; $i < count($rooms); $i++) {
             $rooms[$i]["location"] = $rooms[$i]["build_id"]."-".strval($rooms[$i]["level_no"])."-".strval($rooms[$i]["room_no"]);
             $rooms[$i]["description"] = $rooms[$i]["build_id"]." "."level ".strval($rooms[$i]["level_no"])." room ".strval($rooms[$i]["room_no"])."-".$rooms[$i]["room_type"]; 
@@ -47,8 +46,9 @@ class RoomBookingController extends Controller
     public function ShowBookingReciept(Request $req)
     {
         $data = $req->input();
-        //return $data;
+        //return session("staff");
         $book_detail = new BookingDetail;
+        $book_detail->userid = session("staff")->staff_id;
         $book_detail->email = $data["email"];
         $book_detail->phone_no = $data["phone"];
         $book_detail->booking_size = $data["booking_size"];
@@ -84,7 +84,7 @@ class RoomBookingController extends Controller
             $bookedrooms[$i]["location"] = $room["build_id"]."-".strval($room["level_no"])."-".strval($room["room_no"]);
             $bookedrooms[$i]["description"] = $room["build_id"]." "."level ".strval($room["level_no"])." room ".strval($room["room_no"])."-".$room["room_type"];
         }
-
+        
         return view("staff/StaffBooking",compact("request_rooms","bookedrooms"));
     }
     public function CancelRoom(Request $req)
@@ -112,6 +112,15 @@ class RoomBookingController extends Controller
         $data = Room::all();
         for ($i=0; $i < count($data); $i++) { 
             array_push($data_list,$data[$i]["max_size"]);
+        }
+        return $data_list;
+    }
+    public function GetRoomDuration()
+    {
+        $data_list = [];
+        $data = Room::all();
+        for ($i=0; $i < count($data); $i++) { 
+            array_push($data_list,$data[$i]["room_duration"]);
         }
         return $data_list;
     }

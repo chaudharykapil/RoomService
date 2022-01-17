@@ -10,6 +10,9 @@
               Time
             </th>
             <th class="w-64 bg-red-500 text-lg text-center text-white font-bold">
+              Date
+            </th>
+            <th class="w-64 bg-red-500 text-lg text-center text-white font-bold">
               Location
             </th>
             <th class="w-64 bg-red-500 text-lg text-center text-white font-bold">
@@ -25,6 +28,9 @@
           <tr>
             <td class="w-64 pt-2 text-lg text-center">
               {{$room["time_from"]}} - {{$room["time_to"]}}
+            </td>
+            <td class="w-64 pt-2 text-lg text-center">
+              {{$room["requested_date"]}}
             </td>
             <td class="w-64 pt-2 text-lg text-center">
               {{$room["location"]}}
@@ -49,7 +55,7 @@
       function accept(id) {
         axios.post("/room/accept",{"id":id}).then(e=>location.reload())        
       }
-      function deny(id) {
+      function deny(id) { 
         axios.post("/room/deny",{"id":id}).then(e=>location.reload())
       }
     </script>

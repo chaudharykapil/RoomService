@@ -8,10 +8,13 @@ use App\Http\Controllers\LevelController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\StaffLoginController;
 use App\Http\Controllers\RoomBookingController;
+use App\Http\Controllers\NotificationController;
+//<----------------------------------------Routes for MainPage  ---------------------------------->
+
 Route::get('/', function () {
     return view("mainpage");
 });
-//<-----------------------------------------Routes for Admin ---------------------------->
+//<-----------------------------------------Routes for Admin Auth---------------------------->
 
 Route::get('/admin/login',[AdminController::class,'showLoginPage']);
 Route::post('/admin/login',[AdminController::class,'Login']);
@@ -30,6 +33,7 @@ Route::post('/room/accept',[RoomController::class,'AcceptRequestedRoom']);
 Route::post('/room/deny',[RoomController::class,'DenyRequestedRoom']);
 Route::get('/room/cancelrequest',[RoomController::class,'ShowCancelRequest']);
 Route::post('/room/cancelrequest',[RoomController::class,'CancelRoom']);
+Route::get('/room/showfrequency',[RoomController::class,'ShowRoomFrequency']);
 
 //<-----------------------------------------Routes for Building ---------------------------->
 
@@ -48,6 +52,10 @@ Route::post('/level/edit/{id}',[LevelController::class,'updateLevel']);
 Route::get('/level/list',[LevelController::class,'ListLevelPage']);
 Route::get('/level/delete/{id}',[LevelController::class,'deleteLevel']);
 
+//<----------------------------------------Routes for Notification ---------------------------------->
+
+Route::get("/staff/notification",[NotificationController::class,'ShowNotification']);
+Route::post("/api/shownotification",[NotificationController::class,'readMsg']);
 //<----------------------------------------Routes for Chat ---------------------------------->
 Route::post('/sendmessage',[ChatController::class,'SendMessage']);
 //Route::get('/user', function () {
@@ -76,4 +84,5 @@ Route::post("/staff/cancel",[RoomBookingController::class,"CancelRoom"]);
 Route::get('/api/getBuildings',[BuildingController::class,"GetBuildingId"]);
 Route::get('/api/getLevels/{id}',[LevelController::class,"GetLevelId"]);
 Route::get("/api/getRoomsizes",[RoomBookingController::class,"GetRoomSizes"]);
+Route::get("/api/getroomduration",[RoomBookingController::class,"GetRoomDuration"]);
 Route::post('/api/getmessages',[ChatController::class,"getMessages"]);

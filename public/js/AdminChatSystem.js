@@ -5,15 +5,15 @@ $(document).ready(()=>{
     let activeUsers = []
     Echo.channel('chat')
     .listen('MessageSend', (e) => {
-        console.log(e);
+        //console.log(e);
         if(e.message){
             chatbox.removeAttribute("hidden")
-            console.log(e.message.sender_id)
+            //console.log(e.message.sender_id)
             if (activeUsers.indexOf(e.message.sender_id) == -1){
                 activeUsers.push(e.message.sender_id)
                 send_to = e.message.sender_id
                 axios.post("/api/getmessages",{"sender_id":e.message.sender_id,"reciever_id":e.message.reciever_id}).then(res=>{
-                    console.log(res)
+                    //console.log(res)
                     res.data.forEach(msg => {
                         if (msg.reciever_id == 2 && msg.sender_id == 1){
                             let msgbox = createSenderChatmsg(msg.message)
@@ -30,7 +30,7 @@ $(document).ready(()=>{
                 let msgbox = createRecieverChatmsg(e.message.message)
                 AddMessage(msgbox)
             }
-            console.log(activeUsers)
+            //console.log(activeUsers)
             
         }
     });

@@ -10,6 +10,9 @@
               Time
             </th>
             <th class="w-64 bg-blue-500 text-lg text-center text-white font-bold">
+              Date
+            </th>
+            <th class="w-64 bg-blue-500 text-lg text-center text-white font-bold">
               Location
             </th>
             <th class="w-64 bg-blue-500 text-lg text-center text-white font-bold">
@@ -25,6 +28,9 @@
           <tr>
             <td class="w-64 pt-2 text-lg text-center">
               {{$all_data["pref_time"]}} - {{$all_data["end_time"]}}
+            </td>
+            <td class="w-64 pt-2 text-lg text-center">
+              {{$all_data["date"]}}
             </td>
             <td class="w-64 pt-2 text-lg text-center">
               {{$room["location"]}}

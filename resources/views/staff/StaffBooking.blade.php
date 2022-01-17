@@ -12,6 +12,9 @@
             <th class="w-64 bg-blue-500  text-lg text-center text-white font-bold">
               Time
             </th>
+            <th class="w-64 bg-blue-500  text-lg text-center text-white font-bold">
+              Date
+            </th>
             <th class="w-64 bg-blue-500 text-lg text-center text-white font-bold">
               Location
             </th>
@@ -28,6 +31,9 @@
           <tr>
             <td class="w-64 pt-2 text-lg text-center">
               {{$room["time_from"]}} - {{$room["time_to"]}}
+            </td>
+            <td class="w-64 pt-2 text-lg text-center">
+              {{$room["requested_date"]}}
             </td>
             <td class="w-64 pt-2 text-lg text-center">
               {{$room["location"]}}
@@ -47,6 +53,9 @@
           <tr>
             <td class="w-64 pt-2 text-lg text-center">
               {{$room["time_from"]}} - {{$room["time_to"]}}
+            </td>
+            <td class="w-64 pt-2 text-lg text-center">
+              {{$room["requested_date"]}}
             </td>
             <td class="w-64 pt-2 text-lg text-center">
               {{$room["location"]}}

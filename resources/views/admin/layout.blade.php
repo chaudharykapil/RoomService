@@ -99,6 +99,13 @@
               >Room Cancellation<br/>Request</a
             >
           </li>
+          <li>
+            <a
+              class="text-sm text-white hover:text-gray-100"
+              href="/room/showfrequency"
+              >Frequently used Rooms</a
+            >
+          </li>
         </ul>
         @endif
         <div>
