@@ -9,6 +9,7 @@ use App\Models\BookingDetail;
 use App\Models\BookedRoom;
 use App\Models\BookingCancelRequest;
 use App\Models\Notification;
+use App\Models\Staff;
 class RoomController extends Controller
 {
     public function AddRoomPage()
@@ -147,7 +148,7 @@ class RoomController extends Controller
         $notification = new Notification;
         $notification->user_id = $booking_detail->userid;
         $notification->title = "Accept for room:- ".$room["build_id"]."-".strval($room["level_no"])."-".strval($room["room_no"])." on ".date("d-m-Y");
-        $notification->notification = "Your Request for room ".$room["build_id"]."-".strval($room["level_no"])."-".strval($room["room_no"])." has been Approved for ".strval($reqroom->requested_date);
+        $notification->notification = "Your Request for room ".$room["build_id"]."-".strval($room["level_no"])."-".strval($room["room_no"])." has been Approved for staff id ".srtval($booking_detail->userid)." from ".strval($reqroom->time_from)." to ".strval($reqroom->time_to)." on ".strval($reqroom->requested_date);
         $notification->save();
         $reqroom->delete();
         return $bookroom;
@@ -164,11 +165,10 @@ class RoomController extends Controller
         $notification = new Notification;
         $notification->user_id = $detail->userid;
         $notification->title = "Rejection for room:- ".$room["build_id"]."-".strval($room["level_no"])."-".strval($room["room_no"])." on ".date("d-m-Y");
-        $notification->notification = "Your Request for room ".$room["build_id"]."-".strval($room["level_no"])."-".strval($room["room_no"])." has been Rejected";
+        $notification->notification = "Your Request for room ".$room["build_id"]."-".strval($room["level_no"])."-".strval($room["room_no"])." has been Rejected for staff id ".srtval($detail->userid)." from ".strval($reqroom->time_from)." to ".strval($reqroom->time_to)." on ".strval($reqroom->requested_date);
         $notification->save();
         $reqroom->delete();
         $detail->delete();
-        
         return 0;
     }
     public function ShowCancelRequest()
@@ -198,11 +198,14 @@ class RoomController extends Controller
         $cancel_id = $req->input("id");
         $cancel_req =BookingCancelRequest::find($cancel_id);
         $booking = BookedRoom::find($cancel_req["booking_id"]);
+        $room = Room::find($booking->room_id);
+        $room->frequency = $room->frequency - 1;
+        $room->save(); 
         $detail = BookingDetail::find($booking["booking_detail_id"]);
         $notification = new Notification;
         $notification->user_id = $detail->userid;
-        $notification->title = "Cancellation Approved";
-        $notification->notification = "Your Cancellation Request for room has been Approved";
+        $notification->title = "Cancellation Approved for room:- ".$room["build_id"]."-".strval($room["level_no"])."-".strval($room["room_no"])." on ".date("d-m-Y");
+        $notification->notification = "Your Cancellation Request for room has been Approved for staff id ".srtval($detail->userid)." from ".strval($booking->time_from)." to ".strval($booking->time_to)." on ".strval($booking->requested_date);
         $notification->save();
         $booking->delete();
         $detail->delete();
@@ -216,7 +219,7 @@ class RoomController extends Controller
             return redirect('/admin/login');
         }
         $all_rooms = [];
-        $raw_rooms = Room::all();
+        $raw_rooms = Room::Where("frequency",">",0)->get();
         $all_rooms = $raw_rooms;
         $flag = true;
         while($flag){

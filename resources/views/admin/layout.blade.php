@@ -41,35 +41,14 @@
             lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6
           "
         >
-          
           <li>
             <a
               class="text-sm text-white hover:text-gray-100"
-              href="/room/list"
-              >View Rooms</a
+              href="/building/new"
+              >Add Building</a
             >
           </li>
-          <li>
-            <a
-              class="text-sm text-white hover:text-gray-100"
-              href="/room/new"
-              >Add Rooms</a
-            >
-          </li>
-          <li>
-            <a
-              class="text-sm text-white hover:text-gray-100"
-              href="/level/list"
-              >View Level</a
-            >
-          </li>
-          <li>
-            <a
-              class="text-sm text-white hover:text-gray-100"
-              href="/level/new"
-              >Add Level</a
-            >
-          </li>
+
           <li>
             <a
               class="text-sm text-white hover:text-gray-100"
@@ -80,8 +59,33 @@
           <li>
             <a
               class="text-sm text-white hover:text-gray-100"
-              href="/building/new"
-              >Add Building</a
+              href="/level/new"
+              >Add Level</a
+            >
+          </li>
+
+          
+          <li>
+            <a
+              class="text-sm text-white hover:text-gray-100"
+              href="/level/list"
+              >View Level</a
+            >
+          </li>
+
+          <li>
+            <a
+              class="text-sm text-white hover:text-gray-100"
+              href="/room/new"
+              >Add Rooms</a
+            >
+          </li>
+
+          <li>
+            <a
+              class="text-sm text-white hover:text-gray-100"
+              href="/room/list"
+              >View Rooms</a
             >
           </li>
           
@@ -103,7 +107,7 @@
             <a
               class="text-sm text-white hover:text-gray-100"
               href="/room/showfrequency"
-              >Frequently used Rooms</a
+              >Rooms Usage</a
             >
           </li>
         </ul>
