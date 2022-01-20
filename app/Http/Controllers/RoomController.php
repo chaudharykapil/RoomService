@@ -148,7 +148,7 @@ class RoomController extends Controller
         $notification = new Notification;
         $notification->user_id = $booking_detail->userid;
         $notification->title = "Accept for room:- ".$room["build_id"]."-".strval($room["level_no"])."-".strval($room["room_no"])." on ".date("d-m-Y");
-        $notification->notification = "Your Request for room ".$room["build_id"]."-".strval($room["level_no"])."-".strval($room["room_no"])." has been Approved for staff id ".srtval($booking_detail->userid)." from ".strval($reqroom->time_from)." to ".strval($reqroom->time_to)." on ".strval($reqroom->requested_date);
+        $notification->notification = "Your Request for room ".$room["build_id"]."-".strval($room["level_no"])."-".strval($room["room_no"])." has been Approved for staff id ".strval($booking_detail->userid)." from ".strval($reqroom->time_from)." to ".strval($reqroom->time_to)." on ".strval($reqroom->requested_date);
         $notification->save();
         $reqroom->delete();
         return $bookroom;
@@ -165,7 +165,7 @@ class RoomController extends Controller
         $notification = new Notification;
         $notification->user_id = $detail->userid;
         $notification->title = "Rejection for room:- ".$room["build_id"]."-".strval($room["level_no"])."-".strval($room["room_no"])." on ".date("d-m-Y");
-        $notification->notification = "Your Request for room ".$room["build_id"]."-".strval($room["level_no"])."-".strval($room["room_no"])." has been Rejected for staff id ".srtval($detail->userid)." from ".strval($reqroom->time_from)." to ".strval($reqroom->time_to)." on ".strval($reqroom->requested_date);
+        $notification->notification = "Your Request for room ".$room["build_id"]."-".strval($room["level_no"])."-".strval($room["room_no"])." has been Rejected for staff id ".strval($detail->userid)." from ".strval($reqroom->time_from)." to ".strval($reqroom->time_to)." on ".strval($reqroom->requested_date);
         $notification->save();
         $reqroom->delete();
         $detail->delete();
@@ -205,7 +205,7 @@ class RoomController extends Controller
         $notification = new Notification;
         $notification->user_id = $detail->userid;
         $notification->title = "Cancellation Approved for room:- ".$room["build_id"]."-".strval($room["level_no"])."-".strval($room["room_no"])." on ".date("d-m-Y");
-        $notification->notification = "Your Cancellation Request for room has been Approved for staff id ".srtval($detail->userid)." from ".strval($booking->time_from)." to ".strval($booking->time_to)." on ".strval($booking->requested_date);
+        $notification->notification = "Your Cancellation Request for room has been Approved for staff id ".strval($detail->userid)." from ".strval($booking->time_from)." to ".strval($booking->time_to)." on ".strval($booking->requested_date);
         $notification->save();
         $booking->delete();
         $detail->delete();

@@ -91,7 +91,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="{{asset('js/AdminChatSystem.js')}}"></script>
     
-    <div id="chatpanel" hidden class="absolute bottom-0 right-0 h-9/10 bg-red-600 w-1/4 mb-0 mr-5 rounded-lg">
+    <div id="chatpanel" class="absolute bottom-0 right-0 h-9/10 bg-red-600 w-1/4 mb-0 mr-5 rounded-lg">
       <div class="flex flex-row ml-5">
       <h3 class="text-left text-lg font-bold text-white w-80">Chat with Staff</h3>
       <span id="vis_btn_span"><button class = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 m-1 px-4 rounded" id="visibilitybtn" onclick="showchatbox()">^</button></span>
