@@ -53,7 +53,7 @@ function AddMessage(node) {
     let chatlist = document.getElementById("chatList")
     chatlist.appendChild(node)
 }
-function SendMessage(send_to,sender_id) {
+function SendMessage(sender_id,send_to) {
     let msg = $("#msgbox").val()
     //console.log(msg)
     axios.post("/sendmessage",data = {message:msg,sender_id:sender_id,send_to:send_to}).then((e)=>{

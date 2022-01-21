@@ -96,7 +96,7 @@
       </div>
       <div class="flex flex-row">
         <textarea class="text-xl mx-1 w-72 border-2 rounded-xl focus:outline-none  px-3 border-black" id="msgbox" rows="1" placeholder="Type message"></textarea>
-        <button class = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="SendMessage(1,2)" id="send_btn" type="button">send</button>
+        <button class = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="SendMessage(2,1)" id="send_btn" type="button">send</button>
       </div>
     </div>
   </div>

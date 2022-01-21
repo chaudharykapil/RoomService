@@ -3,11 +3,23 @@ let send_to = null
 $(document).ready(()=>{
     let chatbox = document.getElementById("chatpanel")
     let activeUsers = []
+    axios.post("/api/getmessages",{"sender_id":1,"reciever_id":2}).then(res=>{
+        console.log(res)
+        res.data.forEach(msg => {
+            if (msg.reciever_id == 2 && msg.sender_id == 1){
+                let msgbox = createSenderChatmsg(msg.message)
+                AddMessage(msgbox)
+            }
+            if(msg.reciever_id == 1 && msg.sender_id == 2){
+                let msgbox = createRecieverChatmsg(msg.message)
+                AddMessage(msgbox)
+            }
+        });
+    })
     Echo.channel('chat')
     .listen('MessageSend', (e) => {
         //console.log(e);
         if(e.message){
-            chatbox.removeAttribute("hidden")
             //console.log(e.message.sender_id)
             if (activeUsers.indexOf(e.message.sender_id) == -1){
                 activeUsers.push(e.message.sender_id)
@@ -57,7 +69,7 @@ function AddMessage(node) {
     let chatlist = document.getElementById("chatList")
     chatlist.appendChild(node)
 }
-function SendMessage(sender_id) {
+function SendMessage(sender_id,send_to) {
     let msg = $("#msgbox").val()
     //console.log(msg)
     axios.post("/sendmessage",data = {message:msg,sender_id:sender_id,send_to:send_to}).then((e)=>{

@@ -119,8 +119,10 @@ class RoomBookingController extends Controller
     {
         $data_list = [];
         $data = Room::all();
-        for ($i=0; $i < count($data); $i++) { 
-            array_push($data_list,$data[$i]["room_duration"]);
+        for ($i=0; $i < count($data); $i++) {
+            if(!in_array($data[$i]["room_duration"],$data_list)){
+                array_push($data_list,$data[$i]["room_duration"]);
+            }
         }
         return $data_list;
     }
