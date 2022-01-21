@@ -10,18 +10,14 @@ use App\Http\Controllers\StaffLoginController;
 use App\Http\Controllers\RoomBookingController;
 use App\Http\Controllers\NotificationController;
 //<----------------------------------------Routes for MainPage  ---------------------------------->
-
 Route::get('/', function () {
     return view("mainpage");
 });
 //<-----------------------------------------Routes for Admin Auth---------------------------->
-
 Route::get('/admin/login',[AdminController::class,'showLoginPage']);
 Route::post('/admin/login',[AdminController::class,'Login']);
 Route::get('/admin/logout',[AdminController::class,'LogOut']);
-
 //<-----------------------------------------Routes for Rooms ---------------------------->
-
 Route::get('/room/new',[RoomController::class,'AddRoomPage']);
 Route::post('/room/new',[RoomController::class,'createRoom']);
 Route::get('/room/edit/{id}',[RoomController::class,'EditRoomPage']);
@@ -34,9 +30,7 @@ Route::post('/room/deny',[RoomController::class,'DenyRequestedRoom']);
 Route::get('/room/cancelrequest',[RoomController::class,'ShowCancelRequest']);
 Route::post('/room/cancelrequest',[RoomController::class,'CancelRoom']);
 Route::get('/room/showfrequency',[RoomController::class,'ShowRoomFrequency']);
-
 //<-----------------------------------------Routes for Building ---------------------------->
-
 Route::get('/building/new',[BuildingController::class,'AddBuildingPage']);
 Route::post('/building/new',[BuildingController::class,'createBuilding']);
 Route::get('/building/edit/{id}',[BuildingController::class,'EditBuildingPage']);
@@ -51,9 +45,7 @@ Route::get('/level/edit/{id}',[LevelController::class,'EditLevelPage']);
 Route::post('/level/edit/{id}',[LevelController::class,'updateLevel']);
 Route::get('/level/list',[LevelController::class,'ListLevelPage']);
 Route::get('/level/delete/{id}',[LevelController::class,'deleteLevel']);
-
 //<----------------------------------------Routes for Notification ---------------------------------->
-
 Route::get("/staff/notification",[NotificationController::class,'ShowNotification']);
 Route::post("/api/shownotification",[NotificationController::class,'readMsg']);
 //<----------------------------------------Routes for Chat ---------------------------------->
@@ -62,7 +54,6 @@ Route::post('/sendmessage',[ChatController::class,'SendMessage']);
 //    $send_to = 1;
 //    return view("admin/userChat",compact("send_to"));
 //});
-
 //<----------------------------------------Routes for Staff Login ----------------------------->
 Route::get('/staff/login',[StaffLoginController::class,"ShowLoginPage"]);
 Route::post('/staff/login',[StaffLoginController::class,"StaffLogin"]);
@@ -76,7 +67,6 @@ Route::post('/staff/roombooking',[RoomBookingController::class,"SelectRooms"]);
 Route::post('/staff/detailentry',[RoomBookingController::class,"ShowDetailEntry"]);
 //<-----------------------------------------Routes for Booking Reciept------------------------->
 Route::post('/staff/bookingreciept',[RoomBookingController::class,"ShowBookingReciept"]);
-
 //<-----------------------------------------Routes for room Booking---------------------------->
 Route::get('/staff/allbooking',[RoomBookingController::class,"ShowStaffBooking"]);
 Route::post("/staff/cancel",[RoomBookingController::class,"CancelRoom"]);
