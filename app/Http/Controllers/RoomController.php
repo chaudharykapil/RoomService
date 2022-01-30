@@ -36,6 +36,7 @@ class RoomController extends Controller
         $newRoom->room_name = $data['room_name'];
         $newRoom->room_type = $data['room_type'];
         $newRoom->room_duration = $data["room_duration"];
+        $newRoom->remark = "";
         try {
             $newRoom->status = $data['status'] == 'on';
         } catch (\Throwable $th) {
@@ -75,6 +76,11 @@ class RoomController extends Controller
         $room->room_no = $data['room_no'];
         $room->room_name = $data['room_name'];
         $room->room_type = $data['room_type'];
+        if ($data['remark']) {
+            $room->remark = $data['remark'];
+        } else {
+            $room->remark = "";
+        }
         try {
             $room->status = $data['status'] == 'on';
         } catch (\Throwable $th) {

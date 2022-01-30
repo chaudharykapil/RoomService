@@ -22,7 +22,7 @@ class RoomBookingController extends Controller
     public function SelectRooms(Request $req)
     {
         $data =  $req->input();
-        $rooms = Room::Where("max_size",">=",$data["size"])->Where("room_type","=",$data["room_type"])->Where("build_id","=",$data["build_id"])->Where("room_duration",">=",$data["duration"])->get();
+        $rooms = Room::Where("max_size","=",$data["size"])->Where("room_type","=",$data["room_type"])->Where("build_id","=",$data["build_id"])->Where("room_duration",">=",$data["duration"])->Where("status","=",1)->get();
         $endtime = strtotime($data["pref_time"]) + $data["duration"]*60*60;
         $endtime = date('H:i', $endtime);
         for ($i=0; $i < count($rooms); $i++) {
@@ -109,7 +109,7 @@ class RoomBookingController extends Controller
     public function GetRoomSizes()
     {
         $data_list = [];
-        $data = Room::all();
+        $data = Room::Where("status","=",1)->get();
         for ($i=0; $i < count($data); $i++) { 
             array_push($data_list,$data[$i]["max_size"]);
         }
@@ -118,7 +118,7 @@ class RoomBookingController extends Controller
     public function GetRoomDuration()
     {
         $data_list = [];
-        $data = Room::all();
+        $data = Room::Where("status","=",1)->get();
         for ($i=0; $i < count($data); $i++) {
             if(!in_array($data[$i]["room_duration"],$data_list)){
                 array_push($data_list,$data[$i]["room_duration"]);

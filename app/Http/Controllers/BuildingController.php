@@ -27,6 +27,7 @@ class BuildingController extends Controller
         $newbuilding = new Building;
         $newbuilding->b_id = $data['b_id'];
         $newbuilding->b_name = $data['b_name'];
+        $newbuilding->remark = "";
         try {
             $newbuilding->status = $data['status'] == 'on';
         } catch (\Throwable $th) {
@@ -63,6 +64,12 @@ class BuildingController extends Controller
         $data = $req->input();
         $building->b_id = $data['b_id'];
         $building->b_name = $data['b_name'];
+        if ($data["remark"]) {
+            $building->remark = $data["remark"];    
+        }
+        else{
+            $building->remark = "";
+        }        
         try {
             $building->status = $data['status'] == 'on';
         } catch (\Throwable $th) {
@@ -100,10 +107,8 @@ class BuildingController extends Controller
 //---------------------------------------------------------------------------------------------------
     public function GetBuildingId()
     {
-        
         $id_list = [];
-        
-        $all_buildings = Building::all();
+        $all_buildings = Building::Where("status","=",1)->get();
         for ($i=0; $i < count($all_buildings); $i++) { 
             array_push($id_list,$all_buildings[$i]["b_id"]);
         }

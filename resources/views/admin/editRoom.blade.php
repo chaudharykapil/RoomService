@@ -283,13 +283,12 @@
                 >User Remark</label
               >
               <textarea
-                name=""
-                id=""
+                name="remark"
                 cols="10"
                 rows="6"
                 placeholder="User Remark"
                 class="border p-2 mt-3 w-full rounded-lg border-red-500"
-              ></textarea>
+              >{{$room->remark}}</textarea>
             </div>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">

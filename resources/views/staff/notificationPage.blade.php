@@ -3,7 +3,7 @@
     <div class="flex flex-1 flex-col px-24 py-5">
       <div class="flex flex-col justify-center mt-10">
         @for ($i = 0; $i < count($allnotification); $i++)
-        <div class="flex flex-row flex-1">
+        <div class="flex flex-row flex-1" id="notification-box-{{$allnotification[$i]->id}}">
           <div class="border-2 border-gray-100 rounded-md hover:bg-gray-100  shadow-lg flex-1 my-2 py-3 flex flex-col justify-start overflow-hidden "  onclick="toggle_notification({{$allnotification[$i]->id}})">
             <div class="flex flex-row items-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-bell m-2" viewBox="0 0 16 16">
@@ -17,6 +17,7 @@
             </div>
             <div hidden class="mx-3 mt-10" id="notification-{{$allnotification[$i]->id}}">
               <p>{{$allnotification[$i]->notification}}</p>
+              <button class="py-2 px-3 bg-blue-700 hover:bg-blue-500 text-xl text-center text-white mt-10 rounded-lg" onclick="printnotificatiion({{$allnotification[$i]->id}})">Print</button>
             </div>
           </div>
         </div>
@@ -27,15 +28,22 @@
     <script>
       function toggle_notification(id) {
         let not = document.getElementById("notification-" + id)
-        console.log(not)
         not.toggleAttribute("hidden")
         let dot = document.getElementById("dot-" + id)
         if (dot) {
           dot.toggleAttribute("hidden",true)
           axios.post("/api/shownotification",{id:id}).then(e=>{
-            console.log(e)
           })
         }
+      }
+      function printnotificatiion(id) {
+        let box = document.getElementById("notification-box-" + id)
+        console.log(box)
+        var WinPrint = window.open('', '', 'width=900,height=650');
+        WinPrint.document.write(box.innerHTML);
+        WinPrint.document.close();
+        WinPrint.focus();
+        WinPrint.print();
       }
     </script>
   @endsection

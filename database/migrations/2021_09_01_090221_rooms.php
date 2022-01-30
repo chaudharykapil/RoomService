@@ -19,6 +19,7 @@ class Rooms extends Migration
             $table->integer("level_no");
             $table->integer("room_no");
             $table->integer("max_size");
+            $table->text("remark");
             $table->string('room_name',50);
             $table->string('room_type',30);
             $table->integer('room_duration');

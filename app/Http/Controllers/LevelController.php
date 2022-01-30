@@ -28,6 +28,7 @@ class LevelController extends Controller
         $newLevel->build_id = $data['build_id'];
         $newLevel->level_no = $data['level_no'];
         $newLevel->level_name = $data['level_name'];
+        $newLevel->remark = "";
         try {
             $newLevel->status = $data['status'] == 'on';
         } catch (\Throwable $th) {
@@ -65,6 +66,12 @@ class LevelController extends Controller
         $level->build_id = $data['build_id'];
         $level->level_no = $data['level_no'];
         $level->level_name = $data['level_name'];
+        if ($data["remark"]) {
+            $level->remark = $data["remark"];    
+        }
+        else{
+            $level->remark = "";
+        }
         try {
             $level->status = $data['status'] == 'on';
         } catch (\Throwable $th) {
@@ -106,7 +113,7 @@ class LevelController extends Controller
             session()->flash("message","Please Login First");
             return redirect('/admin/login');
         }
-        $all_levels = Level::Where("build_id","=",$id)->get();
+        $all_levels = Level::Where("build_id","=",$id)->Where("status","=",1)->get();
         $level_list = [];
         for ($i=0; $i < count($all_levels); $i++) { 
             array_push($level_list,$all_levels[$i]["level_no"]);

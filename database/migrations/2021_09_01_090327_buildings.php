@@ -17,6 +17,7 @@ class Buildings extends Migration
             $table->bigIncrements('id');
             $table->string("b_id",50);
             $table->string("b_name",50);
+            $table->text("remark");
             $table->boolean("status");
         });
     }

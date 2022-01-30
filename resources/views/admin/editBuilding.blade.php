@@ -99,13 +99,14 @@
                 >User Remark</label
               >
               <textarea
-                name=""
+                name="remark"
                 id=""
+                
                 cols="10"
                 rows="6"
                 placeholder="User Remark"
                 class="border p-2 mt-3 w-full rounded-lg border-red-500"
-              ></textarea>
+              >{{$building->remark}}</textarea>
             </div>
             <div class="grid grid-cols-1">
               <label
